@@ -1,56 +1,53 @@
-# Guidebook Formatting Basics
+# Lab Guide - CCW0604 – Getting Started with ServiceNow Automated Testing Framework
+
+By: Shrity Verma & Joel Fisher
+
+# Testing a Form
 ## Goal
-Explain the purpose and objective of each section in this area.
-Break labs into groups of related activities and steps.
+The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Media Library application that is already on your lab instance. 
+Prepare for the Test 
+1.	Create a new user called "Media Library Test User".
+2.	Add all of the roles needed for the application (begin with 'x_snc_media') 
+3.	Change your application
 
-Examples: 
-* Create Tables
-* Create Access Request Fields
-* Create Entitlement Fields
+### Write your First Test 
+1.	Create a new **Test** record. Name it "Media Form Test". Right-click the header and **Save** the record.
+2.	Click **Add Test Step** button. <insert image>
+3.  Choose **Impersonate** from the list of options. Choose "Media Library Test User" and Submit. 
+4.  Add another **Test Step**. Under the **Form** section choose "Open a New Form". Choose "Media" as the table then **Submit** the record. 
+5.	Add another Test Step. Also under Form choose "Field State Validation". Under "Visible" add "Creator", "Title" and "Type" to the slushbucket. Under "Mandatory" add "Title". Under "Not Mandatory" add Test"Creator" and "Type". **Submit** the record. 
+6.	Click the **Run Test** button. Examine the results after the run. Did the Test pass or not? Did this match your expectations? Why or why not? 
 
-Use Heading 1/H1 _only_ for section titles.  All content under H1 will render as a single page when digital guidebooks are published.
+# Trouble shooting failure
+## Goal
+The goal of this lab is to familiarize you on what to do when test fails. 
 
-## Sections
-The Heading 2/H2 marker will be used to generate the navigation/table of contents within each section.
+# Testing a Service Catalog
+## Goal
+The goal of this lab is to familiarize you on how to test a service catalog. 
 
-# Markdown Tips & Tricks
-## General Formatting Guide
-We're using GitHub not just to store/version guidebooks, but also to render to HTML.  See [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) for an introduction to standard formatting.
+# Testing Left Navigator
+## Goal
+The goal of this lab is to familiarize you on how to test Left navigation. 
 
-Beyond standard Markdown, we have a few conventions you need to follow for your guidebook to render properly
+# Managing Clide side JavaScript errors
+## Goal
+The goal of this lab is to familarize you with options available when you encounter client side Java script error.
 
-## H1 & H2 relationship
-Always follow your H1 lab title immediately with an H2 section title.  This is a convention we're using to automatically generate the table of contents and navigation.
+# Testing a business rule
+## Goal
+The goal of this lab is to familiarize you on how to test a business rule.
 
-## Lists
-While Markdown supports nesting ordered and un-ordered lists, please avoid using nested lists in your guide book.  This is to avoid conflicts with how we style (or rather, don't) nested lists on the Developer Portal.
+# Creating a custom ATF test
+## Goal
+The goal of this lab is to familiarize you with how to create custom ATF server side step
 
-1. Use numbered lists for task steps
-1. You don't have to manually number each step
+# Using Server side script
+## Goal
+The goal of this lab is to familiarize you on how to use this framework to create tests using scripts
 
-    But sometimes you need paragraphs between steps.  In those cases, indent your paragraphs with a tab.
+# Create a Test Suite and Schedule it
+## Goal
+The goal of this lab is to create a test suite with all the tests created in this lab and schedule the tests
 
-    Multiple paragraphs are OK too.
-
-1. And markdown will pick up numbering where you left off.
-
-# Images
-## General
-
-This is the general form of an image tag in Markdown with alt text in [] and the URL to the image.  The URL can be absolute or relative, but we recommend using relative images for the guidebook (as they may be re-used for other events over the course of the year).
-
-![Absolute](https://www.servicenow.com/etc/designs/servicenow/static/img/anml/logo-rev.png)
-
-![Relative](logo-rev.png)
-
-## Using Paste Image in Visual Studio Code
-
-Paste Image is a helpful extension for those of you using VSCode as your editor.  If you are a ServiceNow employee and you installed VSCode from Self Service, the extension will already be installed.  Documentation for installation & usage can be found [here](https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image)
-
-# Help!
-
-## Office Hours
-Jason & Dave will be holding office hours to answer any questions you may have about Markdown, VSCode or other technical issues you may encounter while authoring your guidebooks.
-
-Dave: Fridays at 12 PM EST / 9 AM PST - https://servicenow-cmr.webex.com/meet/Dave.Slusher
 
