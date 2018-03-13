@@ -4,7 +4,7 @@ By: Shrity Verma & Joel Fischer
 
 # Testing an order processing application
 ## Goal
-The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Media Library application that is already on your lab instance. 
+The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Order processing system application that is already on your lab instance. 
 Prepare for the Test
 
 We will be using an app, which is under developemnet, called order tracking system. This apps allows employee to place a order from company store. Allow purchase department to track that order and maintain an inventory. We will write tests to tests the functionality of this app.
