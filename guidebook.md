@@ -12,7 +12,7 @@ We will be using an app, which is under developemnet, called order tracking syst
 # Test whether the Module and Menu items related to app exists or not for different roles/users
 ## Goal
 The goal of this lab is to make you familirize with how to test menu item and modules visibility of an application in left Navigator
-### TTest whether the Module and Menu items related to app exists or not for employee role
+### Test whether the Module and Menu items related to app exists or not for employee role
 1.	Create a new **Test** record. Name it "Check order traking menu item exists". Right-click the header and **Save** the record.
 2.	Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
 3.  Choose **Impersonate** from the list of options. Choose "Erin Smith" and click **Submit**. 
@@ -25,7 +25,7 @@ The goal of this lab is to make you familirize with how to test menu item and mo
 
 ### Test whether the Module and Menu items related to app exists or not for purchase department role
 1.  Create a new **Test** record. Name it "Check order traking menu item exists". Right-click the header and **Save** the record.
-2.	Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
+2.	Click **Add Test Step** button. 
 3.  Choose **Impersonate** from the list of options. Choose "Paul Anderson" and click **Submit**. 
 4.  Click **Add Test Step**. Under the **Application Navigator** section choose "Application Visibility". 
 5.  In visible assert type select "At least these applications are visible".
@@ -36,8 +36,10 @@ The goal of this lab is to make you familirize with how to test menu item and mo
 
 # Testing if Employee Erin can order an item using service catalog
 ## Goal
+The Goal of this lab is to make sure employees can order items using a service catalog
+
 1.  Create a new **Test** record. Name it "Check order traking menu item exists". Right-click the header and **Save** the record.
-2.	Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
+2.	Click **Add Test Step** button. 
 3.  Choose **Impersonate** from the list of options. Choose "Employee_Erin" and click **Submit**. 
 4.  Click **Add Test Step**. Under the **Service Catalog** section choose "Search for a Catalog Item".
 5.  In the **Catalog item** field select "Apple iPad 3". Click **Submit**
@@ -57,28 +59,23 @@ The goal of this lab is to make you familirize with how to test menu item and mo
 17.  Click **Add Test Step**. Under the Form catagory select "Click a UI Action". Select table as "Request" and select UI action as "Save" and Assert type as "Form Submitted to server"
 
 
-# Testing Left Navigator
+# Test when item is returned the item sold history table is updated accordingly (Business Rule testing)
 ## Goal
-The goal of this lab is to familiarize you on how to test Left navigation.
+The goal of this lab is to make sure when an item is returned the inventory table is updated accordingly. A business rule is executed behind the scen to update the inventory table. This lab will test if business rule was executed correctly
 
-# Managing Clide side JavaScript errors
+### Create the test
+### Run and you should see a browser console error
+### Fix browser console error
+### re-run the test
+
+# Use a server side script to test that e-mail was successfully sent to the user with right content in the e-mail body
 ## Goal
 The goal of this lab is to familarize you with options available when you encounter client JavaScript error.
 
-# Testing a business rule
+# Add and use custom wait step for approval. (Custom step)
 ## Goal
 The goal of this lab is to familiarize you on how to test a business rule.
 
-# Creating a custom ATF test
+# Add all the test created so far and schedule it
 ## Goal
-The goal of this lab is to familiarize you with how to create a custom ATF server side step.
-
-# Using Server side script
-## Goal
-The goal of this lab is to familiarize you on how to use this framework to create tests that run server side scripts.
-
-# Create a Test Suite and Schedule it
-## Goal
-The goal of this lab is to create a test suite with all the tests created in this lab and schedule it to run.
-
 
