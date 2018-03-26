@@ -55,17 +55,28 @@ The Goal of this lab is to make sure employees can order items using a service c
 15. Click **Add Test Step**. Under the Form catagory select "Field Value Validation" select Table as "Request". In the conditions field add Filter condition "Stage is Requested" and "Requested for is"  use gear icon to back reference the impersonated user in step 1
 13. Click **Add Test Step** button. Choose **Impersonate** from the list of options. Choose Approver as user "Amy" and click **Submit**. 
 14. Click **Add Test Step**. Under the Form catagory select "Open an Existing Record" select table as approval. Use the gear icon to back reference to step 11 in Record. Keep View as default. Click Submit
-15.  Click **Add Test Step**. Under the Form catagory select "Set Field Values". Select table as Approval and select Field Values as "State" "approved". Click **Submit**
-17.  Click **Add Test Step**. Under the Form catagory select "Click a UI Action". Select table as "Request" and select UI action as "Save" and Assert type as "Form Submitted to server"
+15. Click **Add Test Step**. Under the Form catagory select "Set Field Values". Select table as Approval and select Field Values as "State" "approved". Click **Submit**
+17. Click **Add Test Step**. Under the Form catagory select "Click a UI Action". Select table as "Request" and select UI action as "Save" and Assert type as "Form Submitted to server"
 
 
 # Test when item is returned the item sold history table is updated accordingly (Business Rule testing)
 ## Goal
 The goal of this lab is to make sure when an item is returned the inventory table is updated accordingly. A business rule is executed behind the scen to update the inventory table. This lab will test if business rule was executed correctly
 
-### Create the test
+1. Create a new **Test** record. Name it "Check order traking menu item exists". Right-click the header and **Save** the record.
+2. Click **Add Test Step** button. 
+3. Choose **Impersonate** from the list of options. Choose "Employee_Erin" and click **Submit**. 
+4. Click **Add Test Step** button. Select "Record Query" step
+5. In the **Assert type** select "There is at least one record matching the query" in **Table** select "Return" table under **Conditions** select "Product" oper as "=" and value as "Apple Ipad 3". Click **Submit**
+4. Click **Add Test Step** button. Select "Record update" step
+5. In the **Assert type** select "Record successfully updated" in **Table** select "order" table under **Record** select "Apple Ipad 3" under **Field values** select "Returned" as "True". Click **Submit**
+6. Click **Add Test Step** button. Select "Record Validation" step  
+7. In the **Assert type** select "Record successfully validated" in **Table** select "Returned" table under **Record** select "gear icon" dot walk to step 4 - 1.
 ### Run and you should see a browser console error
-### Fix browser console error
+8. Select "Run"
+### Ignore browser console error
+9. 
+10. 
 ### re-run the test
 
 # Use a server side script to test that e-mail was successfully sent to the user with right content in the e-mail body
