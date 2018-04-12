@@ -1,4 +1,4 @@
-# Lab Guide - CCW0604 – Getting Started with ServiceNow Automated Testing Framework
+# Lab Guide - CCW0604 – Getting Started with ServiceNow Automated Test Framework
 
 By: Shrity Verma & Joel Fischer
 
