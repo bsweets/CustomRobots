@@ -1,13 +1,32 @@
-# Lab Guide - CCW0604 – Getting Started with ServiceNow Automated Test Framework
 
-By: Shrity Verma & Joel Fischer
-
-# Testing an order processing application
+# Testing a Robot Parts Ordering system application
 ## Goal
-The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Order processing system application that is already on your lab instance. 
+The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Robot Parts Ordering system application that is already on your lab instance. 
 Prepare for the Test
 
 We will be using an app, which is under developemnet, called order tracking system. This apps allows employee to place a order from company store. Allow purchase department to track that order and maintain an inventory. We will write tests to tests the functionality of this app.
+
+## Log in to your provided instance
+1. Navigate to the unique instance URL provided to you.
+1. Log on with provided credentials.
+
+## Run test suites
+1. On your instance, locate and find the **Automated Test Framework->Suites** module and open it.
+1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
+1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
+    ![Testing Framework Properties](images/testing-properties.png)
+    **Note** - in general it is good practice to enable screenshots for either all tests or failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
+
+1. Click the **Run Test Suite** button.
+    ![Run test suite button](images/run_test_suite.png)
+1. Look at the modal window that opens. Click **Run Test Suite**.
+    ![Run test suite modal](images/modal-run-test-suite.png)
+1. Watch the tests as they run in the opened Client Test Runner
+1. Return to the original browser window. Click the **Go To Result** button and inspect the results.
+    ![Test results](images/test-results.png)
+1. Navigate back to **Suites** and open the record for **Parent Suite With A Failing Child**
+1. Run that and inspect the results.
+1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
 # Test whether the Module and Menu items related to app exists or not for different roles/users
 ## Goal
