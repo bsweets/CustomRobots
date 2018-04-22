@@ -68,13 +68,15 @@ The Goal of this section is to make sure buyer can order parts to build custom r
      1. Select "choose_arms " as "Articulated Clamps"
      1. Select "choose_body" as "360 rotating platform"
      1. Select "choose_head" as "Floating orb with LED face"
-     1. Select "choose_legs" as "Levitation Drive" and click **Submit**
-
-1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Catalog Item Quantity"
-1. In the **Quantity** field select "1". Click **Submit**
+     1. Select "choose_legs" as "Levitation Drive" and click **Submit** or **Update**
+     ![](2018-04-22-15-41-04.png)
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Select Assert type as "Successfully ordered Catalog Item"
+![](2018-04-22-15-42-29.png)
 1. Click **Run Test** button
+![](2018-04-22-15-45-06.png)
 1. Click **Run Test** in the "Pick a browser" model window.
+![](2018-04-22-15-45-47.png)
+
 
 # Service Catalog testing (b)
 ## Goal
