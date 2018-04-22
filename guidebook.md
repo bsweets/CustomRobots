@@ -53,19 +53,23 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
 1. Under **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+           ![](2018-04-22-15-28-28.png)
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
     1. Set Category to "Robotics"
-    1. Set Assert Item to "Request new product"
+    1. Set Assert Item to "Request new product" and Click **Submit**
+    ![](2018-04-22-15-30-18.png)
 1.  Click **Add Test Step**. Under the **Service Catalog** category choose "Open Catalog Item"
-1.  Next to the Service Catalog variable, click the mapping icon ![](images/Mappingicon.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". Click **Submit**
-    ![](images/Mappingicon.png)
+1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-31-13.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-15-32-18.png)
+1. Click **Submit**
+   ![](2018-04-22-15-32-52.png)
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
      1. Select "choose_body" as "360 rotating platform"
      1. Select "choose_head" as "Floating orb with LED face"
      1. Select "choose_legs" as "Levitation Drive" and click **Submit**
+
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Catalog Item Quantity"
 1. In the **Quantity** field select "1". Click **Submit**
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Select Assert type as "Successfully ordered Catalog Item"
