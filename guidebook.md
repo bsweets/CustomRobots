@@ -36,13 +36,13 @@ The goal of this section is to familiarize with how to test menu item and module
 1. Click **New**. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
 1. Click **Save** to save the record
 1. Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
-1. Under **Server** Choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+1. Under **Server** Choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility"
 1. In Visible assert type select "At least these application menus are visible"
-1. In Visible application select "Custom Robots". Click **Submit"**
+1. In Visible application select "Custom Robots". Click **Submit** or **Update**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Module Visibility"
 1. In Visible assert type select "At least these modules are visible"
-1. In Visible Modules select "Orders" Click **Submit**
+1. In Visible Modules select "Orders" Click **Submit** or **Update**
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
@@ -52,18 +52,18 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
-1. Under **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+1. Under **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
            ![](2018-04-22-15-28-28.png)
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
     1. Set Category to "Robotics"
     1. Set Assert Item to "Request new product" and Click **Submit**
-    ![](2018-04-22-15-30-18.png)
+    
 1.  Click **Add Test Step**. Under the **Service Catalog** category choose "Open Catalog Item"
-1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-31-13.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-15-32-18.png)
-1. Click **Submit**
-   ![](2018-04-22-15-32-52.png)
+1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-15-36-35.png)
+1. Click **Submit** or **Update**
+  ![](2018-04-22-15-37-31.png)
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
      1. Select "choose_body" as "360 rotating platform"
