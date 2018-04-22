@@ -28,21 +28,23 @@ We will be using an app - currently under development - called "Order Tracking S
 1. Run that and inspect the results.
 1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
-# Test whether the Module and Menu items related to app exists or not for different roles/users
+# Application Navigation Testing
 ## Goal
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
 ### Test whether the Module and Menu items related to app exists or not for employee role
-1. Create a new **Test** record. Name it "Check order tracking app menu exists". Right-click the header and **Save** the record
+1. Click the **Tests** module
+1. Click **New**. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
+1. Click **Save** to save the record
 1. Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
-1. Choose **Impersonate** from the list of options. Choose "Erin Smith" and click **Submit**
+1. Choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility"
 1. In Visible assert type select "At least these application menus are visible"
-1. In Visible application select "Order Tracking System". Click **Submit"=**
+1. In Visible application select "Custom Robots". Click **Submit"**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Module Visibility"
 1. In Visible assert type select "At least these modules are visible"
-1. In Visible Modules select "Orders" and "Products" (under Application "Order Tracking System"). Click **Submit**
+1. In Visible Modules select "Orders" Click **Submit**
 
-# Testing if employee Erin Smith can request the app's Service Catalog item
+# Service Catalog testing
 ## Goal
 The Goal of this section is to make sure employees can order a product using the service catalog
 
@@ -60,7 +62,7 @@ The Goal of this section is to make sure employees can order a product using the
 1. In the **Quantity** field select "1". Click submit
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Select Assert type as "Successfully ordered Catalog Item"
 
-# Testing that an order is generated after approving a request from the catalog item
+# Business rule testing
 ## Goal
 The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval.
 
@@ -73,7 +75,7 @@ The goal of this section is to demonstrate testing a business rule that generate
 1.  Click **Add Test Step**. Under the Form catagory select "Click a UI Action". Select table as "Request" and select UI action as "Save" and Assert type as "Form Submitted to server"
 
 
-# Test when item is returned the item sold history table is updated accordingly (Business Rule testing)
+# Using Run Server Script step 
 ## Goal
 The goal of this section is to make sure when an item is returned the inventory table is updated accordingly. A business rule is executed behind the scene to update the inventory table. This lab will test if business rule was executed correctly
 
@@ -82,13 +84,9 @@ The goal of this section is to make sure when an item is returned the inventory 
 1. Fix browser console error
 1. re-run the test
 
-# Use a server side script to test that e-mail was successfully sent to the user with right content in the e-mail body
+# Add new Test Step using Step config
 ## Goal
 The goal of this section is to familarize you with options available when you encounter client-side JavaScript error.
-
-# Add and use custom wait step for approval. (Custom step)
-## Goal
-The goal of this section is to demonstrate testing a business rule.
 
 # Add all the test created so far and schedule it
 ## Goal
