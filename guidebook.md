@@ -4,7 +4,7 @@
 The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Robot Parts Ordering system application that is already on your lab instance. 
 Prepare for the Test
 
-We will be using an app - currently under development - called "Order Tracking System". This app allows an employee to place a product order request via service catalog. It enables the purchase department to track that order and maintain a product inventory. We will write tests to validate critical use cases of this app.
+We will be using an app - currently under development - called "Custom Robots". This app allows a buyer to order robots parts via service catalog. It enables the seller to track and approve the order. We will write tests to validate critical use cases of this app.
 
 ## Log in to your provided instance
 1. Navigate to the unique instance URL provided to you.
@@ -15,7 +15,7 @@ We will be using an app - currently under development - called "Order Tracking S
 1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
 1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
     ![Testing Framework Properties](images/testing-properties.png)
-    **Note** - in general it is good practice to enable screenshots for either all tests or failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
+    **Note** - in general it is good practice to enable screenshots for failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
 
 1. Click the **Run Test Suite** button.
     ![Run test suite button](images/run_test_suite.png)
@@ -36,43 +36,84 @@ The goal of this section is to familiarize with how to test menu item and module
 1. Click **New**. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
 1. Click **Save** to save the record
 1. Click **Add Test Step** button. ![](images/test_form_add_test_step.png)
-1. Choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+1. Under **Server** Choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility"
 1. In Visible assert type select "At least these application menus are visible"
 1. In Visible application select "Custom Robots". Click **Submit"**
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Module Visibility"
 1. In Visible assert type select "At least these modules are visible"
 1. In Visible Modules select "Orders" Click **Submit**
+1. Click **Run Test** button
+1. Click **Run Test** in the "Pick a browser" model window.
 
-# Service Catalog testing
+# Service Catalog testing (a)
 ## Goal
-The Goal of this section is to make sure employees can order a product using the service catalog
+The Goal of this section is to make sure buyer can order parts to build custom robots using the service catalog
 
-1. Create a new **Test** record. Name it "Check employee can order any product". Right-click the header and **Save** the record
+1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
-1. Choose **Impersonate** from the list of options. Choose "Erin Smith" and click **Submit**
+1. Under **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Search for a Catalog Item"
-    1. Set the Search Term to "Request product"
+    1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
-    1. Set Category to "Product Management"
+    1. Set Category to "Robotics"
     1. Set Assert Item to "Request new product"
 1.  Click **Add Test Step**. Under the **Service Catalog** category choose "Open Catalog Item"
-1.  Next to the Service Catalog variable, click the mapping icon and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". Click **Submit**
+1.  Next to the Service Catalog variable, click the mapping icon ![](images/Mappingicon.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". Click **Submit**
+    ![](images/Mappingicon.png)
+1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
+     1. Select "choose_arms " as "Articulated Clamps"
+     1. Select "choose_body" as "360 rotating platform"
+     1. Select "choose_head" as "Floating orb with LED face"
+     1. Select "choose_legs" as "Levitation Drive" and click **Submit**
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Catalog Item Quantity"
-1. In the **Quantity** field select "1". Click submit
+1. In the **Quantity** field select "1". Click **Submit**
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Select Assert type as "Successfully ordered Catalog Item"
+1. Click **Run Test** button
+1. Click **Run Test** in the "Pick a browser" model window.
+
+# Service Catalog testing (b)
+## Goal
+The Goal of this section is to make sure The above order goes thrus the approval process
+
+1. Click "Order Custom Robot" Test in the Test Module. 
+1. Click **Copy Test** button. Change the Name to "Check for Approvals" 
+1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
+1. Click **Add Test Steps". Under **Forms** catagory choose "Open Existing Record"
+    1. In the Record secetion using mapping icon map it to "Step 5"
+1. Click **Add Test Steps**. Under **Forms** catagory choose "Field Value Validation" 
+    1. Select "Table" as "Request"
+    1. In "Condition" dropdown select "Stage" "is" "Requested"
+    1. Click "And" Button
+    1. In the dropdown select "Requested for" "is" using mapping icon map it to step 1
+1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
+1. Click **Add Test Step**  Under **Server** catagory choose **Record Query** step
+    1. Select "Table" as "Approval"
+    1. In the condition dropdown select "Approving" "is" using the mapping icon map it to "step 5" and click **Submit**
+1. Click **Add Test Step**   Under **Forms** catagory choose **Open Existing Record** step
+    1. Select "Table" as "Approval"
+    1. In The Record using the mapping icon map it to step 10 and click **Submit**
+1. Click **Add Test Step**   Under **Forms** catagory choose **Set Field Values** step
+    1. Select "Table" as "Approval"
+    1. Select "Field Value" select "State" "Approved" and click **Submit**
+1. Click **Add Test Step**   Under **Forms** catagory choose **Click a UI Action** step
+    1. Select "Table" as "Request"
+    1. Select "UI Action" as "Save" from the reference option and click **Submit**
+1. Click **Run Test** button
+1. Click **Run Test** in the "Pick a browser" model window.
 
 # Business rule testing
 ## Goal
-The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval.
+The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval. 
 
-1. Click **Add Test Step** button. Choose **Impersonate** from the list of options. Choose ITIL user "Ira" and click **Submit** 
-1. Click **Add Test Step**. Under the Form category select "Open an Existing Record" select Table as "Request". Use the gear icon to back reference to step 6 in the test. Keep View as its default value. Click **Submit**
-1. Click **Add Test Step**. Under the Form catagory select "Field Value Validation" select Table as "Request". In the conditions field add Filter condition "Stage is Requested" and "Requested for is"  use gear icon to back reference the impersonated user in step 1
-1. Click **Add Test Step** button. Choose **Impersonate** from the list of options. Choose Approver as user "Amy" and click **Submit**
-1. Click **Add Test Step**. Under the Form catagory select "Open an Existing Record" select table as approval. Use the gear icon to back reference to step 11 in Record. Keep View as default. **Click Submit**
-1.  Click **Add Test Step**. Under the Form catagory select "Set Field Values". Select table as Approval and select Field Values as "State" "approved". Click **Submit**
-1.  Click **Add Test Step**. Under the Form catagory select "Click a UI Action". Select table as "Request" and select UI action as "Save" and Assert type as "Form Submitted to server"
+1. Click "Order Custom Robot" Test in the Test Module. 
+1. Click **Copy Test** button. Change the Name to "Order created in order table" 
+1. Click **Add Test Step**. Under the **Server** catagory select "Record Query" 
+1. In the Table option select "Order" table
+1. In the condition section select column as "Request Item". Using the gear icon reference back to Step 5
+1. Click **Submit** button
+1. Click **Run Test** button
+1. Click **Run Test** in the "Pick a browser" model window.
 
 
 # Using Run Server Script step 
