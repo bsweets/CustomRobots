@@ -6,8 +6,8 @@ Prepare for the Test
 
 We will be using an app - currently under development - called "Custom Robots". This app allows a buyer to order robots parts via service catalog. It enables the seller to track and approve the order. We will write tests to validate critical use cases of this app.
 
-## Exercise 1(a): Setup
-Log in to your provided instance
+# Exercise 1: Setup
+## Exercise 1(a) Log in to your provided instance
 1. Navigate to the unique instance URL provided to you.
 1. Log on with provided credentials.
 
@@ -71,8 +71,8 @@ The goal of this section is to familiarize with how to test menu item and module
 1. Click **Run Test** in the "Pick a browser" model window.
 ![](2018-04-22-18-53-33.png)
 
-# Exercise 3(a): Service Catalog testing
-## Goal
+# Exercise 3: Service Catalog testing
+## Exercise 3(a) Order Catalog Item
 The Goal of this section is to make sure buyer can order parts to build custom robots using the service catalog
 
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
@@ -108,8 +108,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-# Exercise 2(b) : Service Catalog testing
-## Goal
+## Exercise 2(b) : Test approval of the order
 The Goal of this section is to make sure The above order goes thrus the approval process
 
 1. Click "Order Custom Robot" Test in the Test Module. 
