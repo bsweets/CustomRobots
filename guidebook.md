@@ -14,16 +14,16 @@ We will be using an app - currently under development - called "Custom Robots". 
 1. On your instance, locate and find the **Automated Test Framework->Suites** module and open it.
 1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
 1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
-    ![Testing Framework Properties]![]![](2018-04-22-18-33-39.png)
+    ![Testing Framework Properties](2018-04-22-18-33-39.png)
     **Note** - in general it is good practice to enable screenshots for failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
 
 1. Click the **Run Test Suite** button.
     ![Run test suite button](
 1. Look at the modal window that opens. Click **Run Test Suite**.
-    ![Run test suite modal]![](2018-04-22-18-35-14.png)
+    ![Run test suite modal](2018-04-22-18-35-14.png)
 1. Watch the tests as they run in the opened Client Test Runner
 1. Return to the original browser window. Click the **Go To Result** button and inspect the results.
-    ![Test results]![](2018-04-22-18-36-50.png)
+    ![Test results](2018-04-22-18-36-50.png)
 1. Navigate back to **Suites** and open the record for **Parent Suite With A Failing Child**
 1. Run that and inspect the results.
 1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
@@ -34,27 +34,27 @@ The goal of this section is to familiarize with how to test menu item and module
 ### Test whether the Module and Menu items related to app exists or not for employee role
 1. Click the **Tests** module
   
-  ![](2018-04-22-18-38-44.png)
+  ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
 
 1. Click **New**. 
 
-![](2018-04-22-18-40-04.png)
+![New Button](2018-04-22-18-40-04.png)
 
 1. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
 1. Click **Save** to save the record
 
-![](2018-04-22-18-41-47.png)
+![Application Visibility Test](2018-04-22-18-41-47.png)
 
 1. Click **Add Test Step** button. 
 
-![](2018-04-22-18-43-14.png)
+![Add Test Step](2018-04-22-18-43-14.png)
 
 1. Under **Server** Choose **Impersonate** from the list of options. Click **Next**
 
-![](2018-04-22-18-45-00.png)
+![Test Catagory](2018-04-22-18-45-00.png)
 1. Choose "Abel Tuter" and Click **Submit** or **Update**
 
-![](2018-04-22-18-47-08.png)
+![Impersonate Test Step](2018-04-22-18-47-08.png)
 
 1. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility". Click **Next**
 1. In Visible assert type select "At least these application menus are visible"
