@@ -6,15 +6,16 @@ Prepare for the Test
 
 We will be using an app - currently under development - called "Custom Robots". This app allows a buyer to order robots parts via service catalog. It enables the seller to track and approve the order. We will write tests to validate critical use cases of this app.
 
-## Log in to your provided instance
+## Exercise 1(a): Setup
+Log in to your provided instance
 1. Navigate to the unique instance URL provided to you.
 1. Log on with provided credentials.
 
-## Run test suites
+## Exercise 1(b) :Run test suites
 1. On your instance, locate and find the **Automated Test Framework->Suites** module and open it.
 1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
 1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
-    ![Testing Framework Properties](2018-04-22-18-33-39.png)
+    ![Testing Framework Properties](2018-04-22-19-19-27.png)
     **Note** - in general it is good practice to enable screenshots for failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
 
 1. Click the **Run Test Suite** button.
@@ -28,7 +29,7 @@ We will be using an app - currently under development - called "Custom Robots". 
 1. Run that and inspect the results.
 1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
-# Application Navigation Testing
+# Exercise 2: Application Navigation Testing
 ## Goal
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
 
@@ -70,7 +71,7 @@ The goal of this section is to familiarize with how to test menu item and module
 1. Click **Run Test** in the "Pick a browser" model window.
 ![](2018-04-22-18-53-33.png)
 
-# Service Catalog testing (a)
+# Exercise 3(a): Service Catalog testing
 ## Goal
 The Goal of this section is to make sure buyer can order parts to build custom robots using the service catalog
 
@@ -86,7 +87,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
     ![](2018-04-22-19-07-31.png)
 
 1.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
-1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-15-36-35.png)
+1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-19-18-03.png)
 1. Click **Submit** or **Update**
 
 ![](2018-04-22-19-11-01.png)
@@ -107,7 +108,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-# Service Catalog testing (b)
+# Exercise 2(b) : Service Catalog testing
 ## Goal
 The Goal of this section is to make sure The above order goes thrus the approval process
 
@@ -137,7 +138,7 @@ The Goal of this section is to make sure The above order goes thrus the approval
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-# Business rule testing
+# Exercise 3: Business rule testing
 ## Goal
 The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval. 
 
