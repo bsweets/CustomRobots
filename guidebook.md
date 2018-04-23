@@ -31,7 +31,8 @@ We will be using an app - currently under development - called "Custom Robots". 
 # Application Navigation Testing
 ## Goal
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
-### Test whether the Module and Menu items related to app exists or not for employee role
+
+### Test whether the Module and Menu items related to app is visible to the buyer
 1. Click the **Tests** module
   
   ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
@@ -49,7 +50,7 @@ The goal of this section is to familiarize with how to test menu item and module
 
 ![Add Test Step](2018-04-22-18-43-14.png)
 
-1. Under **Server** Choose **Impersonate** from the list of options. Click **Next**
+1. In the **Server** catagory Choose **Impersonate** from the list of options. Click **Next**
 
 ![Test Catagory](2018-04-22-18-45-00.png)
 1. Choose "Abel Tuter" and Click **Submit** or **Update**
@@ -75,21 +76,20 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
-1. Under **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
-
-           ![](2018-04-22-15-28-28.png)
-
+1. In the **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
     1. Set Category to "Robotics"
     1. Set Assert Item to "Request new product" and Click **Submit**
-    
-1.  Click **Add Test Step**. Under the **Service Catalog** category choose "Open Catalog Item"
+
+    ![](2018-04-22-19-07-31.png)
+
+1.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
 1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-15-36-35.png)
 1. Click **Submit** or **Update**
 
-  ![](2018-04-22-15-37-31.png)
+![](2018-04-22-19-11-01.png)
 
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
@@ -97,12 +97,12 @@ The Goal of this section is to make sure buyer can order parts to build custom r
      1. Select "choose_head" as "Floating orb with LED face"
      1. Select "choose_legs" as "Levitation Drive" and click **Submit** or **Update**
 
-     ![](2018-04-22-18-27-33.png)
+    ![](2018-04-22-19-09-13.png)
 
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Click **Next**
 1. Select Assert type as "Successfully ordered Catalog Item"
 
-![](2018-04-22-15-42-29.png)
+![](2018-04-22-19-12-16.png)
 
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
