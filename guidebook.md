@@ -1,6 +1,5 @@
 
 # Testing a Robot Parts Ordering system application
-## Goal
 The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Robot Parts Ordering system application that is already on your lab instance. 
 Prepare for the Test
 
@@ -136,8 +135,8 @@ The Goal of this section is to make sure The above order goes thrus the approval
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-# Exercise 3: Business rule testing
-## Goal
+# Exercise 4: Business rule testing
+
 The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval. 
 
 1. Click "Order Custom Robot" Test in the Test Module. 
