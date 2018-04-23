@@ -30,7 +30,6 @@ We will be using an app - currently under development - called "Custom Robots". 
 1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
 # Exercise 2: Application Navigation Testing
-## Goal
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
 
 ### Test whether the Module and Menu items related to app is visible to the buyer
@@ -108,7 +107,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-## Exercise 2(b) : Test approval of the order
+## Exercise 3(b) : Test approval of the order
 The Goal of this section is to make sure The above order goes thrus the approval process
 
 1. Click "Order Custom Robot" Test in the Test Module. 
