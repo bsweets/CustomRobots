@@ -1,18 +1,16 @@
 
-# Testing a Robot Parts Ordering system application
-The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. You will be testing the Robot Parts Ordering system application that is already on your lab instance. 
-Prepare for the Test
-
-We will be using an app - currently under development - called "Custom Robots". This app allows a buyer to order robots parts via service catalog. It enables the seller to track and approve the order. We will write tests to validate critical use cases of this app.
+# Testing a Custom Robots application
+The goal of this lab is to familiarize you with creating tests based on the provided Test Steps. We will be using an app - currently under development - called "Custom Robots". This app allows a buyer to order robots parts via service catalog. It enables the seller to track and approve the order. We will write tests to validate critical use cases of this app.
 
 # Exercise 1: Setup
 ## Exercise 1(a) Log in to your provided instance
 1. Navigate to the unique instance URL provided to you.
 1. Log on with provided credentials.
 
-## Exercise 1(b) :Run test suites
+## Exercise 1(b) Run test suites
 1. On your instance, locate and find the **Automated Test Framework->Suites** module and open it.
 1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
+ ![](2018-04-23-15-10-11.png)
 1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
     ![Testing Framework Properties](2018-04-22-19-19-27.png)
     **Note** - in general it is good practice to enable screenshots for failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
@@ -76,7 +74,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
 1. In the **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
-1. Click **Add Test Step**. Under the **Service Catalog** category choose "Search for a Catalog Item"
+1. Click **Add Test Step**. Under the **Server** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
     1. Set Category to "Robotics"
@@ -99,7 +97,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
     ![](2018-04-22-19-09-13.png)
 
 1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Click **Next**
-1. Select Assert type as "Successfully ordered Catalog Item"
+1. Select Assert type as "Successfully ordered Catalog Item" and click **Submit** or **Update**
 
 ![](2018-04-22-19-12-16.png)
 
@@ -111,27 +109,38 @@ The Goal of this section is to make sure The above order goes thrus the approval
 
 1. Click "Order Custom Robot" Test in the Test Module. 
 1. Click **Copy Test** button. Change the Name to "Check for Approvals" 
+
+![](2018-04-23-11-31-55.png)
+
 1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
-1. Click **Add Test Steps". Under **Forms** catagory choose "Open Existing Record"
-    1. In the Record secetion using mapping icon map it to "Step 5"
+1. Click **Add Test Steps**. Under **Forms** catagory choose "Open Existing Record"
+    1. In "Table" select "Request" In the "Record section" using mapping icon map it to "Step 5"
+    ![](2018-04-23-11-33-42.png)
 1. Click **Add Test Steps**. Under **Forms** catagory choose "Field Value Validation" 
     1. Select "Table" as "Request"
     1. In "Condition" dropdown select "Stage" "is" "Requested"
     1. Click "And" Button
     1. In the dropdown select "Requested for" "is" using mapping icon map it to step 1
+      ![](2018-04-24-15-13-58.png)
 1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
 1. Click **Add Test Step**  Under **Server** catagory choose **Record Query** step
-    1. Select "Table" as "Approval"
+    1. Select "Table" as "Approval[sysapproval_approver]"
     1. In the condition dropdown select "Approving" "is" using the mapping icon map it to "step 5" and click **Submit**
+    ![](2018-04-24-15-06-22.png)
 1. Click **Add Test Step**   Under **Forms** catagory choose **Open Existing Record** step
     1. Select "Table" as "Approval"
     1. In The Record using the mapping icon map it to step 10 and click **Submit**
+    ![](2018-04-24-15-10-19.png)
 1. Click **Add Test Step**   Under **Forms** catagory choose **Set Field Values** step
     1. Select "Table" as "Approval"
-    1. Select "Field Value" select "State" "Approved" and click **Submit**
+    1. In "Field Value" select "State" "Approved" and click **Submit**
+     ![](2018-04-24-15-08-02.png)
 1. Click **Add Test Step**   Under **Forms** catagory choose **Click a UI Action** step
-    1. Select "Table" as "Request"
-    1. Select "UI Action" as "Save" from the reference option and click **Submit**
+    1. Select "Table" as "Request [sc_request]"
+    1. Select "UI Action" as "Save" from the reference option
+    1. Select Assert type as "Form submitted to server" and click **Submit**
+    ![](2018-04-24-15-12-05.png)
+
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
@@ -139,11 +148,16 @@ The Goal of this section is to make sure The above order goes thrus the approval
 
 The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval. 
 
-1. Click "Order Custom Robot" Test in the Test Module. 
+1. Click "Check for Approvals" Test in the Test Module. 
 1. Click **Copy Test** button. Change the Name to "Order created in order table" 
 1. Click **Add Test Step**. Under the **Server** catagory select "Record Query" 
 1. In the Table option select "Order" table
-1. In the condition section select column as "Request Item". Using the gear icon reference back to Step 5
+1. In the condition drop down select "Show Related Fields" column. Click the drop down again select "Request Item ==> Requested Item fields"
+![](2018-04-24-15-19-10.png)
+1. Click the drop down again select "Request"
+![](2018-04-24-15-21-38.png)
+1. Select Step 5 using back reference in the condition
+![](2018-04-24-15-23-21.png)
 1. Click **Submit** button
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
