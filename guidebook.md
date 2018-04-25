@@ -163,21 +163,25 @@ The goal of this section is to demonstrate testing a business rule that generate
 1. Click **Run Test** in the "Pick a browser" model window.
 
 
-# Using Run Server Script step 
+# Run Server Script 
 ## Goal
-The goal of this section is to make sure when an item is returned the inventory table is updated accordingly. A business rule is executed behind the scene to update the inventory table. This lab will test if business rule was executed correctly
+The goal of this section is to make sure when an item is shipped an e-mail was sent with right content in it. We will use Run Server Side script test step to test that
 
 1. Click **Add Test Step**  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
 1. Click **Add Test Step**. Under the **Server** category choose **Record Insert** step click **Next**
 1. Fill in the step as below screen and click **Update** or **Submit**
 ![](2018-04-25-16-29-08.png)
+
 1. Click **Add Test Step**. Under the **Server** category choose **Record Update** step click **Next**
 1. Fill in the step as show in below screen and click **Update** or **Submit**
- ![](2018-04-25-16-30-46.png)
-1.  **Note** We are using dynamic date on order update
+
+   ![](2018-04-25-16-30-46.png)
+         **Note** We are using dynamic date on order update
 1. Click **Add Test Step**. Under the **Server** category choose **Run Server Side Script** step click **Next**
 1. Copy below code in the script box and click **Update** or **Submit**
+
 ```javascript
+
      (function(outputs, steps, stepResult, assertEqual) {
 	// specify first step sys_id
 	var firstStepSysId = 'a598fe3b732113003c7ceeadfff6a7c5';
