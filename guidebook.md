@@ -174,10 +174,10 @@ The goal of this section is to make sure when an item is returned the inventory 
 1. Click **Add Test Step**. Under the **Server** category choose **Record Update** step click **Next**
 1. Fill in the step as show in below screen and click **Update** or **Submit**
  ![](2018-04-25-16-30-46.png)
-      **Note** We are using dynamic date on order update
+1.  **Note** We are using dynamic date on order update
 1. Click **Add Test Step**. Under the **Server** category choose **Run Server Side Script** step click **Next**
 1. Copy below code in the script box and click **Update** or **Submit**
-/*
+```javascript
      (function(outputs, steps, stepResult, assertEqual) {
 	// specify first step sys_id
 	var firstStepSysId = 'a598fe3b732113003c7ceeadfff6a7c5';
@@ -231,9 +231,7 @@ The goal of this section is to make sure when an item is returned the inventory 
 })(outputs, steps, stepResult, assertEqual);
 // uncomment the next line to execute this script as a jasmine test
 //jasmine.getEnv().execute();
-
-*/
-
+```
 
 # Add new Test Step using Step config
 ## Goal
