@@ -150,7 +150,7 @@ The goal of this section is to demonstrate testing a business rule that generate
 
 1. Click "Check for Approvals" Test in the Test Module. 
 1. Click **Copy Test** button. Change the Name to "Order created in order table" 
-1. Click **Add Test Step**. Under the **Server** catagory select "Record Query" 
+1. Click **Add Test Step**. Under the **Server** category select "Record Query" 
 1. In the Table option select "Order" table
 1. In the condition drop down select "Show Related Fields" column. Click the drop down again select "Request Item ==> Requested Item fields"
 ![](2018-04-24-15-19-10.png)
@@ -167,10 +167,73 @@ The goal of this section is to demonstrate testing a business rule that generate
 ## Goal
 The goal of this section is to make sure when an item is returned the inventory table is updated accordingly. A business rule is executed behind the scene to update the inventory table. This lab will test if business rule was executed correctly
 
-1. Create the test
-1. Run and you should see a browser console error
-1. Fix browser console error
-1. re-run the test
+1. Click **Add Test Step**  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+1. Click **Add Test Step**. Under the **Server** category choose **Record Insert** step click **Next**
+1. Fill in the step as below screen and click **Update** or **Submit**
+![](2018-04-25-16-29-08.png)
+1. Click **Add Test Step**. Under the **Server** category choose **Record Update** step click **Next**
+1. Fill in the step as show in below screen and click **Update** or **Submit**
+ ![](2018-04-25-16-30-46.png)
+      **Note** We are using dynamic date on order update
+1. Click **Add Test Step**. Under the **Server** category choose **Run Server Side Script** step click **Next**
+1. Copy below code in the script box and click **Update** or **Submit**
+/*
+     (function(outputs, steps, stepResult, assertEqual) {
+	// specify first step sys_id
+	var firstStepSysId = 'a598fe3b732113003c7ceeadfff6a7c5';
+
+	// get order from first step
+	var orderId = steps(firstStepSysId).record_id;
+	var order = new GlideRecord('sn_custom_robots_order');
+	order.get(orderId);
+    var assertOrderExists = {
+          name: "assert order exists",
+          shouldbe: 1,
+          value: order.getRowCount(),
+    };
+    assertEqual(assertOrderExists);
+	gs.info('found order: ' + order.sys_id);
+
+	// get buyer's first name from order
+	var user = new GlideRecord('sys_user');
+	user.get(order.buyer);
+    var assertUserExists = {
+          name: "assert user exists",
+          shouldbe: 1,
+          value: user.getRowCount(),
+    };
+    assertEqual(assertUserExists);
+	gs.info("found buyer: " + user.sys_id + ", first name: " + user.first_name);
+
+	// wait for email to be created from business rulea after order updated to shipped
+	var counter = 0;
+	while (counter++ < 20) {
+		// check if email found
+		var email = new GlideRecord('sys_email');
+		email.addQuery('subject', 'LIKE', '%' + order.number + '%');
+		email.query();
+		if (email.next()) {
+			gs.info('email body contents first 200 chars: \n' + email.body.substring(0,200));
+			var assertEmailContainsBuyerFirstName = {
+			name: "email body contains recipient first name",
+			shouldbe: true,
+			value: (email.body.indexOf(user.first_name) != -1),
+			};
+			assertEqual(assertEmailContainsBuyerFirstName);
+			return true;
+		}
+		gs.sleep(1000);
+	}
+	// if reached here, the email wasn't sent or took longer than 20 seconds
+	stepResult.setOutputMessage("Failed to find email in 20 seconds");
+	return false;
+
+})(outputs, steps, stepResult, assertEqual);
+// uncomment the next line to execute this script as a jasmine test
+//jasmine.getEnv().execute();
+
+*/
+
 
 # Add new Test Step using Step config
 ## Goal
