@@ -47,9 +47,9 @@ The goal of this section is to familiarize with how to test menu item and module
 
 ![Add Test Step](2018-04-22-18-43-14.png)
 
-1. In the **Server** catagory Choose **Impersonate** from the list of options. Click **Next**
+1. In the **Server** category Choose **Impersonate** from the list of options. Click **Next**
 
-![Test Catagory](2018-04-22-18-45-00.png)
+![Test Category](2018-04-22-18-45-00.png)
 1. Choose "Abel Tuter" and Click **Submit** or **Update**
 
 ![Impersonate Test Step](2018-04-22-18-47-08.png)
@@ -73,7 +73,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
 1. Click **Add Test Step** button
-1. In the **Server** catagory choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
+1. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
 1. Click **Add Test Step**. Under the **Server** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
@@ -105,37 +105,37 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 1. Click **Run Test** in the "Pick a browser" model window.
 
 ## Exercise 3(b) : Test approval of the order
-The Goal of this section is to make sure The above order goes thrus the approval process
+The Goal of this section is to make sure the above order goes thru the approval process
 
 1. Click "Order Custom Robot" Test in the Test Module. 
 1. Click **Copy Test** button. Change the Name to "Check for Approvals" 
 
 ![](2018-04-23-11-31-55.png)
 
-1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
-1. Click **Add Test Steps**. Under **Forms** catagory choose "Open Existing Record"
+1. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
+1. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
     1. In "Table" select "Request" In the "Record section" using mapping icon map it to "Step 5"
     ![](2018-04-23-11-33-42.png)
-1. Click **Add Test Steps**. Under **Forms** catagory choose "Field Value Validation" 
+1. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
     1. Select "Table" as "Request"
     1. In "Condition" dropdown select "Stage" "is" "Requested"
     1. Click "And" Button
     1. In the dropdown select "Requested for" "is" using mapping icon map it to step 1
       ![](2018-04-24-15-13-58.png)
-1. Click **Add Test Step**  Under **Server** catagory choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
-1. Click **Add Test Step**  Under **Server** catagory choose **Record Query** step
+1. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
+1. Click **Add Test Step**  Under **Server** category choose **Record Query** step
     1. Select "Table" as "Approval[sysapproval_approver]"
     1. In the condition dropdown select "Approving" "is" using the mapping icon map it to "step 5" and click **Submit**
     ![](2018-04-24-15-06-22.png)
-1. Click **Add Test Step**   Under **Forms** catagory choose **Open Existing Record** step
+1. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
     1. Select "Table" as "Approval"
     1. In The Record using the mapping icon map it to step 10 and click **Submit**
     ![](2018-04-24-15-10-19.png)
-1. Click **Add Test Step**   Under **Forms** catagory choose **Set Field Values** step
+1. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
     1. Select "Table" as "Approval"
     1. In "Field Value" select "State" "Approved" and click **Submit**
      ![](2018-04-24-15-08-02.png)
-1. Click **Add Test Step**   Under **Forms** catagory choose **Click a UI Action** step
+1. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
     1. Select "Table" as "Request [sc_request]"
     1. Select "UI Action" as "Save" from the reference option
     1. Select Assert type as "Form submitted to server" and click **Submit**
@@ -239,8 +239,10 @@ The goal of this section is to make sure when an item is shipped an e-mail was s
 
 # Add new Test Step using Step config
 ## Goal
-The goal of this section is to familarize you with options available when you encounter client-side JavaScript error.
+The goal of this section is to familiarize you with options available when you encounter client-side JavaScript error.
 
 # Add all the test created so far and schedule it
 ## Goal
+1. 
+
 
