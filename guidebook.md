@@ -215,7 +215,7 @@ The goal of this section is to make sure when an item is shipped an e-mail was s
     assertEqual(assertUserExists);
 	gs.info("found buyer: " + user.sys_id + ", first name: " + user.first_name);
 
-	// wait for email to be created from business rulea after order updated to shipped
+	// wait for email to be created from business rule after order updated to shipped
 	var counter = 0;
 	while (counter++ < 20) {
 		// check if email found
@@ -338,7 +338,7 @@ function generateDescription() {
 1. Click **Run Test** button
 1. Click **Run Test** in the "Pick a browser" model window.
 
-# Exercise 6: Create and Schedule Test Suite
+# Exercise 7: Create and Schedule Test Suite
 ## Goal
 1. Navigate to **Automated Test Framework->Suites** 
 ![](2018-04-26-16-55-52.png)
