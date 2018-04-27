@@ -9,7 +9,7 @@ The goal of this lab is to familiarize you with creating tests based on the prov
 
 ## Exercise 1(b) Run test suites
 1. On your instance, locate and find the **Automated Test Framework->Suites** module and open it.
-1. Open the **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
+1. Open the **Child B** says **Test Suite with Several Successful Members** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
  ![](2018-04-23-15-10-11.png)
 1. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
     ![Testing Framework Properties](2018-04-22-19-19-27.png)
@@ -21,15 +21,20 @@ The goal of this lab is to familiarize you with creating tests based on the prov
     ![Run test suite modal](2018-04-22-18-35-14.png)
 1. Watch the tests as they run in the opened Client Test Runner
 1. Return to the original browser window. Click the **Go To Result** button and inspect the results.
-    ![Test results](2018-04-22-18-36-50.png)
+    ![](2018-04-27-15-26-08.png)
+1. Click on the record to open it
+![](2018-04-27-15-27-28.png) 
+1. You should see browser console error. Add it to ignore list by clicking "Add all client errors to ignored list"
+![](2018-04-27-15-18-14.png)
+1. Navigate to "Automated Test Framework->Suite"
+1. Open the **Child B** says **Test Suite with Several Successful Members** 
+1. Click the **Run Test Suite** button.
 1. Navigate back to **Suites** and open the record for **Parent Suite With A Failing Child**
 1. Run that and inspect the results.
 1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
 # Exercise 2: Application Navigation Testing
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
-
-### Test whether the Module and Menu items related to app is visible to the buyer
 1. Click the **Tests** module
   
   ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
@@ -163,10 +168,11 @@ The goal of this section is to demonstrate testing a business rule that generate
 1. Click **Run Test** in the "Pick a browser" model window.
 
 
-# Run Server Script 
+# Exercise 5: Run Server Script 
 ## Goal
-The goal of this section is to make sure when an item is shipped an e-mail was sent with right content in it. We will use Run Server Side script test step to test that
+The goal of this section is to make sure when an item is shipped an e-mail was sent with right content in it. We will use Run Server Side script test step to test that e-mail was sent once order was shipped.
 
+1. Create a new **Test** record. Name it "Check e-mail Notification". Right-click the header and **Save** the record
 1. Click **Add Test Step**  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
 1. Click **Add Test Step**. Under the **Server** category choose **Record Insert** step click **Next**
 1. Fill in the step as below screen and click **Update** or **Submit**
@@ -237,12 +243,126 @@ The goal of this section is to make sure when an item is shipped an e-mail was s
 //jasmine.getEnv().execute();
 ```
 
-# Add new Test Step using Step config
+# Exercise 6: Create a new Step Configurations
 ## Goal
-The goal of this section is to familiarize you with options available when you encounter client-side JavaScript error.
+The goal of this section is to create new step config and use that step in an existing test. The Step approves the request
 
-# Add all the test created so far and schedule it
+1. Navigate to **Automated Test Framework->Administration->Step Configurations**
+ ![](2018-04-26-16-52-34.png)
+2. Click **New**
+3. Fill up the form as below
+   1. Name as "Approve Request"
+   1. Step environment as "Server-Independent"
+   1. Category as "Server"
+   1. Template Reminder as "Approves this request by group approver"
+   1. HTML description as "Approves this request by group approver"
+![](2018-04-27-12-21-02.png)
+4. In the "Description generation script" make sure you see below code if not add it
+```javascript
+function generateDescription() {
+    // the global variable 'step' represents the current glide record
+    var description = "";
+	// your code here
+	return description;
+}
+ generateDescription();
+```
+5. In the "Step execution script" box add following code
+```javascript
+(function executeStep(inputs, outputs, stepResult, timeout) {
+	
+	var request = new GlideRecord('sc_request');
+	request.get(inputs.u_request);
+	var groupApprover = new GlideRecord('sys_user');
+	groupApprover.get(inputs.u_group_approver);
+	
+	// wait for approval to appear
+	var counter = 0;
+	while (counter++ < 60) {
+		var approval = new GlideRecord('sysapproval_approver');
+		approval.addQuery('document_id', request.sys_id);
+		approval.addQuery('state', 'requested');
+		approval.query();
+		if (approval.next()) {
+			approval.state = 'approved';
+			if (approval.update()) {
+				stepResult.setOutputMessage(gs.getMessage("successfully approved request '{0}' for user {1}", [request.number, groupApprover.name]));
+				stepResult.setSuccess();
+				return;
+			} else {
+				stepResult.setOutputMessage(gs.getMessage("failed to approve request '{0}' for user {1}", [request.number, groupApprover.name]));
+				stepResult.setFailed();
+				return;
+			}
+		}
+		gs.sleep(1000);
+	}
+	stepResult.setOutputMessage("failed to find approver");
+	stepResult.setFailed();
+	return;
+	
+
+}(inputs, outputs, stepResult, timeout));
+```
+7. Click **Save**
+8. Under related list "Input Variables" click **New**
+![](2018-04-27-12-28-14.png)
+9. Add
+   1. Type: Reference
+   1. Label: Request
+   1. Name: u_request
+   1. Under Reference Specification:
+   1. Reference: sc_request (Request)
+   ![](2018-04-27-12-31-12.png)
+10. Click **Submit** or **Update**
+11. Under related list "Input Variables" click **New**
+12. Create second input variable as 
+   1. TType: Reference
+   1. Label: Group approver
+   1. Name: u_group_approver
+   1. Under Reference Specification:
+   1. Reference: sys_user (User)
+   ![](2018-04-27-12-33-57.png)
+13. Click **Submit** or **Update**
+**Now we will use this new step created in our test to approve the request**
+1. Click "Order Custom Robot" Test in the Test Module. 
+1. Click **Copy Test** button. Change the Name to "Approve Order using Custom Step" 
+1. Click **Add Test Step**. Under the **Server** category look for the new step added "Approve Request" 
+1. Back reference to step 5 and select "Group approver" as "Eric Schroeder"
+       ![](2018-04-27-12-41-56.png)
+1. Click **Submit** or **Update**
+1. Click **Add Test Step**. Under the **Server** category select "Record Query" Step
+    1. Select table as "order" table
+    1. Dot walk to "Request Item.Request" like we did in exercise 4 step 5 & 6 and back reference to step 5 and then click **Submit or Next** 
+      ![](2018-04-27-12-46-22.png)
+1. Click **Run Test** button
+1. Click **Run Test** in the "Pick a browser" model window.
+
+# Exercise 6: Create and Schedule Test Suite
 ## Goal
-1. 
+1. Navigate to **Automated Test Framework->Suites** 
+![](2018-04-26-16-55-52.png)
+2. Click **New** 
+3. Add Name as "My Lab Test Suite"
+![](2018-04-27-14-45-25.png)
+4. In the Related List "Test Suite Tests" Click **New**
+![](2018-04-27-14-47-21.png)
+5. Select  "Application Visibility" Click **Submit**
+![](2018-04-27-14-48-19.png)
+6. Repeat Step 4 and 5 and add below test to the suite
+    1. Order Custom Robot
+    1. Check e-mail Notification
+    1. Check for approvals
+    1. Order created in order table
+    1. Approve order using custom step
+    ![](2018-04-27-14-54-37.png)
+7. Navigate to "Automated Test Framework ->  Schedules"
+8. Click **New**
+9. Add Name as "My Lab Test Schedule"
+10. Click **Save**
+11. Click **New**
+12. Using Lookup list add "MyL ab Test Suite"
+![](2018-04-27-15-05-24.png)
+13. Click **Execute Now**
 
-
+*** Congratulations you have successfully completed the lab ***
