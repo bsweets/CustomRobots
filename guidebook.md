@@ -29,9 +29,6 @@ The goal of this lab is to familiarize you with creating tests based on the prov
 1. Navigate to "Automated Test Framework->Suite"
 1. Open the **Child B** says **Test Suite with Several Successful Members** 
 1. Click the **Run Test Suite** button.
-1. Navigate back to **Suites** and open the record for **Parent Suite With A Failing Child**
-1. Run that and inspect the results.
-1. Look at the records under **All Test Suite Results** and examine the differences between successful and failed tests.
 
 # Exercise 2: Application Navigation Testing
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
@@ -39,37 +36,37 @@ The goal of this section is to familiarize with how to test menu item and module
   
   ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
 
-1. Click **New**. 
+2. Click **New**. 
 
 ![New Button](2018-04-22-18-40-04.png)
 
-1. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
-1. Click **Save** to save the record
+3. In the **Name** add "Application Visibility" in the Description add "Test to see whether application Custom Robots and Module Orders are visible" 
+4. Click **Save** to save the record
 
 ![Application Visibility Test](2018-04-22-18-41-47.png)
 
-1. Click **Add Test Step** button. 
+5. Click **Add Test Step** button. 
 
 ![Add Test Step](2018-04-22-18-43-14.png)
 
-1. In the **Server** category Choose **Impersonate** from the list of options. Click **Next**
+6. In the **Server** category Choose **Impersonate** from the list of options. Click **Next**
 
 ![Test Category](2018-04-22-18-45-00.png)
-1. Choose "Abel Tuter" and Click **Submit** or **Update**
+7. Choose "Abel Tuter" and Click **Submit** or **Update**
 
 ![Impersonate Test Step](2018-04-22-18-47-08.png)
 
-1. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility". Click **Next**
-1. In Visible assert type select "At least these application menus are visible"
-1. In Visible application select "Custom Robots". Click **Submit** or **Update**
+8. Click **Add Test Step**. Under the **Application Navigator** category choose "Application Menu Visibility". Click **Next**
+9. In Visible assert type select "At least these application menus are visible"
+10. In Visible application select "Custom Robots". Click **Submit** or **Update**
 ![](2018-04-22-18-49-30.png)
-1. Click **Add Test Step**. Under the **Application Navigator** category choose "Module Visibility"
-1. In Visible assert type select "At least these modules are visible"
-1. In Visible Modules select "Orders" Click **Submit** or **Update**
+11. Click **Add Test Step**. Under the **Application Navigator** category choose "Module Visibility"
+12. In Visible assert type select "At least these modules are visible"
+13. In Visible Modules select "Orders" Click **Submit** or **Update**
 ![](2018-04-22-18-50-53.png)
-1. Click **Run Test** button
+14. Click **Run Test** button
 ![](2018-04-22-18-51-52.png)
-1. Click **Run Test** in the "Pick a browser" model window.
+15. Click **Run Test** in the "Pick a browser" model window.
 ![](2018-04-22-18-53-33.png)
 
 # Exercise 3: Service Catalog testing
@@ -77,9 +74,9 @@ The goal of this section is to familiarize with how to test menu item and module
 The Goal of this section is to make sure buyer can order parts to build custom robots using the service catalog
 
 1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
-1. Click **Add Test Step** button
-1. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
-1. Click **Add Test Step**. Under the **Server** category choose "Search for a Catalog Item"
+2. Click **Add Test Step** button
+3. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
+4. Click **Add Test Step**. Under the **Server** category choose "Search for a Catalog Item"
     1. Set the Search Term to "Customized Robot"
     1. Set Catalog to "Service Catalog"
     1. Set Category to "Robotics"
@@ -87,13 +84,13 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 
     ![](2018-04-22-19-07-31.png)
 
-1.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
-1.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-19-18-03.png)
-1. Click **Submit** or **Update**
+5.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
+6.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-19-18-03.png)
+7. Click **Submit** or **Update**
 
 ![](2018-04-22-19-11-01.png)
 
-1. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
+8. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
      1. Select "choose_body" as "360 rotating platform"
      1. Select "choose_head" as "Floating orb with LED face"
@@ -101,71 +98,71 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 
     ![](2018-04-22-19-09-13.png)
 
-1. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Click **Next**
-1. Select Assert type as "Successfully ordered Catalog Item" and click **Submit** or **Update**
+9. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Click **Next**
+10. Select Assert type as "Successfully ordered Catalog Item" and click **Submit** or **Update**
 
 ![](2018-04-22-19-12-16.png)
 
-1. Click **Run Test** button
-1. Click **Run Test** in the "Pick a browser" model window.
+11. Click **Run Test** button
+12. Click **Run Test** in the "Pick a browser" model window.
 
 ## Exercise 3(b) : Test approval of the order
 The Goal of this section is to make sure the above order goes thru the approval process
 
 1. Click "Order Custom Robot" Test in the Test Module. 
-1. Click **Copy Test** button. Change the Name to "Check for Approvals" 
+2. Click **Copy Test** button. Change the Name to "Check for Approvals" 
 
 ![](2018-04-23-11-31-55.png)
 
-1. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
-1. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
+3. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
+4. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
     1. In "Table" select "Request" In the "Record section" using mapping icon map it to "Step 5"
     ![](2018-04-23-11-33-42.png)
-1. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
+5. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
     1. Select "Table" as "Request"
     1. In "Condition" dropdown select "Stage" "is" "Requested"
     1. Click "And" Button
     1. In the dropdown select "Requested for" "is" using mapping icon map it to step 1
       ![](2018-04-24-15-13-58.png)
-1. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
-1. Click **Add Test Step**  Under **Server** category choose **Record Query** step
+6. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
+7. Click **Add Test Step**  Under **Server** category choose **Record Query** step
     1. Select "Table" as "Approval[sysapproval_approver]"
     1. In the condition dropdown select "Approving" "is" using the mapping icon map it to "step 5" and click **Submit**
     ![](2018-04-24-15-06-22.png)
-1. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
+8. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
     1. Select "Table" as "Approval"
     1. In The Record using the mapping icon map it to step 10 and click **Submit**
     ![](2018-04-24-15-10-19.png)
-1. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
+9. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
     1. Select "Table" as "Approval"
     1. In "Field Value" select "State" "Approved" and click **Submit**
      ![](2018-04-24-15-08-02.png)
-1. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
+10. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
     1. Select "Table" as "Request [sc_request]"
     1. Select "UI Action" as "Save" from the reference option
     1. Select Assert type as "Form submitted to server" and click **Submit**
     ![](2018-04-24-15-12-05.png)
 
-1. Click **Run Test** button
-1. Click **Run Test** in the "Pick a browser" model window.
+11. Click **Run Test** button
+12. Click **Run Test** in the "Pick a browser" model window.
 
 # Exercise 4: Business rule testing
 
 The goal of this section is to demonstrate testing a business rule that generates an Order upon request approval. 
 
 1. Click "Check for Approvals" Test in the Test Module. 
-1. Click **Copy Test** button. Change the Name to "Order created in order table" 
-1. Click **Add Test Step**. Under the **Server** category select "Record Query" 
-1. In the Table option select "Order" table
-1. In the condition drop down select "Show Related Fields" column. Click the drop down again select "Request Item ==> Requested Item fields"
+2. Click **Copy Test** button. Change the Name to "Order created in order table" 
+3. Click **Add Test Step**. Under the **Server** category select "Record Query" 
+4. In the Table option select "Order" table
+5. In the condition drop down select "Show Related Fields" column. Click the drop down again select "Request Item ==> Requested Item fields"
 ![](2018-04-24-15-19-10.png)
-1. Click the drop down again select "Request"
+6. Click the drop down again select "Request"
 ![](2018-04-24-15-21-38.png)
-1. Select Step 5 using back reference in the condition
+7. Select Step 5 using back reference in the condition
 ![](2018-04-24-15-23-21.png)
-1. Click **Submit** button
-1. Click **Run Test** button
-1. Click **Run Test** in the "Pick a browser" model window.
+8. Click **Submit** button
+9. Click **Run Test** button
+10. Click **Run Test** in the "Pick a browser" model window.
 
 
 # Exercise 5: Run Server Script 
@@ -173,18 +170,18 @@ The goal of this section is to demonstrate testing a business rule that generate
 The goal of this section is to make sure when an item is shipped an e-mail was sent with right content in it. We will use Run Server Side script test step to test that e-mail was sent once order was shipped.
 
 1. Create a new **Test** record. Name it "Check e-mail Notification". Right-click the header and **Save** the record
-1. Click **Add Test Step**  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
-1. Click **Add Test Step**. Under the **Server** category choose **Record Insert** step click **Next**
-1. Fill in the step as below screen and click **Update** or **Submit**
+2. Click **Add Test Step**  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+3. Click **Add Test Step**. Under the **Server** category choose **Record Insert** step click **Next**
+4. Fill in the step as below screen and click **Update** or **Submit**
 ![](2018-04-25-16-29-08.png)
 
-1. Click **Add Test Step**. Under the **Server** category choose **Record Update** step click **Next**
-1. Fill in the step as show in below screen and click **Update** or **Submit**
+5. Click **Add Test Step**. Under the **Server** category choose **Record Update** step click **Next**
+6. Fill in the step as show in below screen and click **Update** or **Submit**
 
    ![](2018-04-25-16-30-46.png)
          **Note** We are using dynamic date on order update
-1. Click **Add Test Step**. Under the **Server** category choose **Run Server Side Script** step click **Next**
-1. Copy below code in the script box and click **Update** or **Submit**
+7. Click **Add Test Step**. Under the **Server** category choose **Run Server Side Script** step click **Next**
+8. Copy below code in the script box and click **Update** or **Submit**
 
 ```javascript
 
@@ -304,39 +301,39 @@ function generateDescription() {
 
 }(inputs, outputs, stepResult, timeout));
 ```
-7. Click **Save**
-8. Under related list "Input Variables" click **New**
+6. Click **Save**
+7. Under related list "Input Variables" click **New**
 ![](2018-04-27-12-28-14.png)
-9. Add
+8. Add
    1. Type: Reference
    1. Label: Request
    1. Name: u_request
    1. Under Reference Specification:
    1. Reference: sc_request (Request)
    ![](2018-04-27-12-31-12.png)
-10. Click **Submit** or **Update**
-11. Under related list "Input Variables" click **New**
-12. Create second input variable as 
+9. Click **Submit** or **Update**
+10. Under related list "Input Variables" click **New**
+11. Create second input variable as 
    1. TType: Reference
    1. Label: Group approver
    1. Name: u_group_approver
    1. Under Reference Specification:
    1. Reference: sys_user (User)
    ![](2018-04-27-12-33-57.png)
-13. Click **Submit** or **Update**
+12. Click **Submit** or **Update**
 **Now we will use this new step created in our test to approve the request**
 1. Click "Order Custom Robot" Test in the Test Module. 
 1. Click **Copy Test** button. Change the Name to "Approve Order using Custom Step" 
 1. Click **Add Test Step**. Under the **Server** category look for the new step added "Approve Request" 
 1. Back reference to step 5 and select "Group approver" as "Eric Schroeder"
        ![](2018-04-27-12-41-56.png)
-1. Click **Submit** or **Update**
-1. Click **Add Test Step**. Under the **Server** category select "Record Query" Step
+13. Click **Submit** or **Update**
+14. Click **Add Test Step**. Under the **Server** category select "Record Query" Step
     1. Select table as "order" table
     1. Dot walk to "Request Item.Request" like we did in exercise 4 step 5 & 6 and back reference to step 5 and then click **Submit or Next** 
       ![](2018-04-27-12-46-22.png)
-1. Click **Run Test** button
-1. Click **Run Test** in the "Pick a browser" model window.
+15. Click **Run Test** button
+16. Click **Run Test** in the "Pick a browser" model window.
 
 # Exercise 7: Create and Schedule Test Suite
 ## Goal
