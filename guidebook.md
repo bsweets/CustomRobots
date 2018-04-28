@@ -22,15 +22,15 @@ The goal of this lab is to familiarize you with creating tests based on the prov
 ![](2018-04-27-18-49-16.png)
 
 7. Watch the tests as they run in the opened Client Test Runner
-1. Return to the original browser window. Click the **Go To Result** button and inspect the results.
+8. Return to the original browser window. Click the **Go To Result** button and inspect the results.
     ![](2018-04-27-15-26-08.png)
-1. Click on the record to open it
+9. Click on the record to open it
 ![](2018-04-27-15-27-28.png) 
-1. You should see browser console error. Add it to ignore list by clicking "Add all client errors to ignored list"
+10. You should see browser console error. Add it to ignore list by clicking "Add all client errors to ignored list"
 ![](2018-04-27-15-18-14.png)
-1. Navigate to "Automated Test Framework->Suite"
-1. Open the **Child B** says **Test Suite with Several Successful Members** 
-1. Click the **Run Test Suite** button.
+11. Navigate to "Automated Test Framework->Suite"
+12. Open the **Child B** says **Test Suite with Several Successful Members** 
+13. Click the **Run Test Suite** button.
 
 # Exercise 2: Application Navigation Testing
 The goal of this section is to familiarize with how to test menu item and modules visibility of an application in application navigator
@@ -83,6 +83,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 4.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
 5. Add "Customized Robot" using the reference 
 ![](2018-04-27-23-01-19.png)
+
 6. Click **Submit** or **Update**
 7. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
@@ -110,39 +111,39 @@ The Goal of this section is to make sure the above order goes thru the approval 
 
 ![](2018-04-23-11-31-55.png)
 
-5. Open "Check for Approvals" test
-4. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
-5. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
+4. Open "Check for Approvals" test
+5. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
+6. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
     1. In "Table" select "Request" In the "Record section"  click the bback reference icon ![](2018-04-22-15-37-05.png) map it to "Step 4" Click **Submit**
     ![](2018-04-27-23-03-30.png)
-6. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
+7. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
     1. Select "Table" as "Request"
     1. In "Condition" dropdown select "Stage" "is" "Requested"
     1. Click "And" Button
-    1. In the dropdown select "Requested for" "is" using mapping icon map it to step 1 Click **Submit**
+    1. In the dropdown select "Requested for" "is" using back referencing icon map it to step 1 Click **Submit**
       ![](2018-04-24-15-13-58.png)
-7. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
-8. Click **Add Test Step**  Under **Server** category choose **Record Query** step
+8. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
+9. Click **Add Test Step**  Under **Server** category choose **Record Query** step
     1. Select "Table" as "Approval[sysapproval_approver]"
-    1. In the condition dropdown select "Approving" "is" using the mapping icon map it to "step 4" and click **Submit**
+    1. In the condition dropdown select "Approving" "is" using the back referencing icon map it to "step 4" and click **Submit**
     ![](2018-04-24-15-06-22.png)
-9. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
+10. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
     1. Select "Table" as "Approval"
-    1. In The Record using the mapping icon map it to step 10 and click **Submit**
+    1. In The Record using the back referencing icon map it to step 10 and click **Submit**
     ![](2018-04-24-15-10-19.png)
-10. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
+11. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
     1. Select "Table" as "Approval"
     1. In "Field Value" select "State" "Approved" and click **Submit**
      ![](2018-04-24-15-08-02.png)
-11. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
+12. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
     1. Select "Table" as "Request [sc_request]"
     1. Select "UI Action" as "Save" from the reference option
     1. Select Assert type as "Form submitted to server" and click **Submit**
     ![](2018-04-24-15-12-05.png)
 
-12. Click **Run Test** button
-13. Click **Run Test** in the "Pick a browser" model window.
-14. The test should bbe successful.
+13. Click **Run Test** button
+14. Click **Run Test** in the "Pick a browser" model window.
+15. The test should bbe successful.
 
 # Exercise 4: Business rule testing
 
@@ -252,8 +253,8 @@ The goal of this section is to make sure when an item is shipped an e-mail was s
 ![](2018-04-27-21-53-48.png)
 9. Copy the sys_id in this line "var firstStepSysId = 'a598fe3b732113003c7ceeadfff6a7c5';" 
 ![](2018-04-27-21-56-03.png)
-8. Click **Run Test** button
-9. Test should be successful
+10. Click **Run Test** button
+11. Test should be successful
 
 # Exercise 6: Create a new Step Configurations
 ## Goal
@@ -381,6 +382,6 @@ function generateDescription() {
 13. Navigate to "Automated Test Framework -> Run-> Scheduled Client Test Runner" Right Click and select "Open Link in New Tab"
 14. Go back to main tab and navigate to "Automated Test Framework ->Schedules"
 15. Open "My Lab Test Schedule"
-13. Click **Execute Now**
+16. Click **Execute Now**
 
 *** Congratulations you have successfully completed the lab ***
