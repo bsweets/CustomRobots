@@ -81,8 +81,10 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 2. Click **Add Test Step** button
 3. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update**
 4.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
-5.  Next to the Service Catalog variable, click the mapping icon ![](2018-04-22-15-37-05.png) and in the step reference pop-up, select "Step 2: Search for a Catalog Item." > "Catalog Item ID". ![](2018-04-22-19-18-03.png)
-6. Click **Submit** or **Update**
+5. Add "Customized Robot" using the reference 
+![](2018-04-27-23-01-19.png)
+
+6. ![](2018-04-27-23-04-06.png)Click **Submit** or **Update**
 
 ![](2018-04-22-19-11-01.png)
 
@@ -115,8 +117,8 @@ The Goal of this section is to make sure the above order goes thru the approval 
 5. Open "Check for Approvals" test
 4. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
 5. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
-    1. In "Table" select "Request" In the "Record section" using mapping icon map it to "Step 4" Click **Submit**
-    ![](2018-04-23-11-33-42.png)
+    1. In "Table" select "Request" In the "Record section"  click the bback reference icon ![](2018-04-22-15-37-05.png) map it to "Step 4" Click **Submit**
+    ![](2018-04-27-23-03-30.png)
 6. Click **Add Test Steps**. Under **Forms** category choose "Field Value Validation" 
     1. Select "Table" as "Request"
     1. In "Condition" dropdown select "Stage" "is" "Requested"
