@@ -83,11 +83,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 4.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
 5. Add "Customized Robot" using the reference 
 ![](2018-04-27-23-01-19.png)
-
-6. ![](2018-04-27-23-04-06.png)Click **Submit** or **Update**
-
-![](2018-04-22-19-11-01.png)
-
+6. Click **Submit** or **Update**
 7. Click **Add Test Step**. Under the **Service Catalog** category choose "Set Variables Values"
      1. Select "choose_arms " as "Articulated Clamps"
      1. Select "choose_body" as "360 rotating platform"
