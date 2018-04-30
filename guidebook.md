@@ -12,8 +12,8 @@ The goal of this lab is to familiarize you with creating tests based on the prov
 2. Open the **Child B** says **A test suite with only successful tests within it** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
  ![](2018-04-23-15-10-11.png)
 3. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Disable for all steps**. Click **Save** at the bottom of the page.
-    ![Testing Framework Properties](2018-04-22-19-19-27.png)
-    **Note** - in general it is good practice to enable screenshots for failed tests. For the purposes of this lab will will disable that for both speed of execution and bandwidth reasons.
+    ![Automated Test Framework properties](2018-04-22-19-19-27.png)
+    **Note** - in general it is good practice to enable screenshots for failed steps for both speed of execution and bandwidth.
 
 4. Go back to Automated Test Framework-> Suites and open "Child B" test suite 
 5. Click the **Run Test Suite** button.
