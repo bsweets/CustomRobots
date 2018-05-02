@@ -10,41 +10,45 @@ We will be using an app - currently under development - called "Custom Robots". 
 2. Log on with provided credentials.
 
 ## Exercise 1(b) Enable the ATF, run a test, and whitelist a client error
-1. On your instance, locate and find the **Automated Test Framework** -> **Tests** module and open it.
-2. Open the **Child B** says **A test suite with only successful tests within it** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page.
+1. On your instance, locate the **Automated Test Framework** -> **Tests** module and open it
+2. Open the **Child B** says **A test suite with only successful tests within it** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page
 
     ![](2018-04-23-15-10-11.png)
-3. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Enable for failing steps**. Click **Save** at the bottom of the page.
+3. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Enable for failing steps**. Click **Save** at the bottom of the page
 
     ![Automated Test Framework properties](2018-04-22-19-19-27.png)
     
-    **Note** - in general it is good practice to enable screenshots for failed steps for both speed of execution and bandwidth.
+    **Note** - in general it is good practice to enable screenshots for failed steps for both speed of execution and bandwidth
 
-***Now a "Run test" button appears on the Test form, and a "Run Test Suite" button appears on the Suite form***
+***Now that you've enabled tests, let's run one:***
 
-4. Go back to **Automated Test Framework** -> **Tests** and open existing test "open an order form"
+4. Go back to **Automated Test Framework** -> **Tests** and open existing test "Open new order form"
 5. Click the **Run Test** button.
 
-6. TODO
-<!--TODO    ![Run test suite modal](2018-04-22-18-35-14.png)
-6. Click **Run Test Suites**
-![](2018-04-27-18-49-16.png)
--->
-7. Watch the test as it runs in the opened **Client Test Runner** and then reports failure.
-8. Return to the original browser window. Click the **Go To Result** button and inspect the results of the failure that the progress viewer reports.
+    ![](E1B_001.png)
+6. In the "Pick a Browser" modal click **Run Test** button
 
-9. TODO
-<!--    ![](2018-04-27-15-26-08.png)
-9. Click on the record to open it
+    ![](E1B_002.png)
+7. Watch the test as it runs in the newly opened **Client Test Runner** window
 
-    ![](2018-04-27-15-27-28.png) 
--->
-10. You should see browser console error. Add it to warning list - for future investigation by the application developer(s) - by clicking "Add all client errors to warning list", and you can send them a link to it to view later.
+    ![](E1B_003.png)
+8. Return to the original browser window where you started the test. Click the **Go To Result** button and view the results
 
-    ![](2018-04-27-15-18-14.png)
-11. Navigate to **Automated Test Framework** -> **Suite**
-12. Open the same test "open an order form" again
-13. Click the **Run Test** button. The test should pass, with status `Success with Warning(s)`
+    ![](E1B_004.png)
+9. The test result shows that the test failed due to a client error
+    * A JavaScript error occurred on the form that the test loaded in the first step
+    * The test result shows which step, what the error was, and the related screenshot to show on what screen the error was reported
+
+    ![](E1B_005.png)
+10. Add the failing **Test Log** to the warning list by clicking **Add all client errors to warning list**
+
+    ![](E1B_006.png)
+    * This action adds a record to the **Whitelisted Client Errors** table
+
+        ![](E1B_007.png)
+11. Navigate to **Automated Test Framework** -> **Tests**
+12. Open the same test "Open new order form" again and run it. The test should pass with status `Success with Warning(s)`
+    * More information about this can be found on the Test Result
 
 # Exercise 2: Application Navigator Role-based Testing
 The goal of this section is to test application menu and module visibility of our app
@@ -57,14 +61,14 @@ The goal of this section is to test application menu and module visibility of ou
 3. Set the `Name` to "Application Visibility" and the `Description` to "Application menu Custom Robots and module Orders are visible to the user"
 4. Click **Save** to save the record
 
-    ![Application Visibility Test](2018-04-22-18-41-47.png)
+    ![Application Visibility Test](2018-04-22-18-41-47.png) //TODO
 5. Click **Add Test Step** button
 
     ![Add Test Step](2018-04-22-18-43-14.png)
 6. In the **Server** category choose **Impersonate** from the list of step options. Click **Next** button
 
     ![Test Category](2018-04-22-18-45-00.png)
-7. Choose "Abel Tuter" and Click **Submit** or **Update** button
+7. Choose "Abel Tuter" and Click **Submit** button
 
     ![Impersonate Test Step](2018-04-22-18-47-08.png)
 
@@ -101,15 +105,15 @@ The Goal of this section is to make sure buyer can order parts to build custom r
     ![](2018-04-27-23-01-19.png)
 6. Click **Submit** or **Update** button
 7. Click **Add Test Step**. Under the **Service Catalog** category choose **Set Variables Values**
-     1. Select "choose_arms " as "Articulated Clamps"
-     2. Select "choose_body" as "360 rotating platform"
-     3. Select "choose_head" as "Floating orb with LED face"
-     4. Select "choose_legs" as "Levitation Drive" and click **Submit** or **Update**
+     1. Select `choose_arms` as `Articulated Clamps`
+     2. Select `choose_body` as `360 rotating platform`
+     3. Select `choose_head` as `Floating orb with LED face`
+     4. Select `choose_legs` as `Levitation Drive` and click **Submit** or **Update**
 
     ![](2018-04-22-19-09-13.png)
 
-8. Click **Add Test Step**. Under the **Service Catalog** category choose "Order Catalog Item". Click **Next**
-9. Select Assert type as "Successfully ordered Catalog Item" and click **Submit** or **Update**
+8. Click **Add Test Step**. Under the **Service Catalog** category choose **Order Catalog Item** and click **Next** button
+9. Select Assert type as `Successfully ordered Catalog Item` and click **Submit** or **Update**
 
     ![](2018-04-22-19-12-16.png)
 
@@ -118,7 +122,7 @@ The Goal of this section is to make sure buyer can order parts to build custom r
 12. Test should be successful.
 
 ## Exercise 3(b) : Test approval of the order
-The Goal of this section is to make sure the above order goes thru the approval process
+The Goal of this section is to make sure the above order goes through the approval process
 
 1. Go to **Automated Test Framework** -> **Tests**
 2. Click "Order Custom Robot" Test in the Test Module. 
