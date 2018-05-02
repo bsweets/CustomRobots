@@ -1,20 +1,21 @@
 
 # Testing a Custom Robots application
-The goal of this lab is to familiarize you with creating and running tests with the latest features.
+The goal of this section is to familiarize you with creating and running tests with the latest features.
 
-We will be using an app - currently under development - called "Custom Robots". This app enables a buyer to order custom robots via Service Catalog. The seller can track and approve the order state and sends the buyer an email when the order is complete. We will write tests to validate critical use cases of this app.
+We will be using an app - currently under development - called "Custom Robots". This app enables a buyer to order custom robots via Service Catalog. The seller can track and approve the order state and sends the buyer an email when the order is complete. We will write tests to validate critical use cases of this app
 
 # Exercise 1: Setup
 ## Exercise 1(a) Log in to your provided instance
-1. Navigate to the unique instance URL provided to you.
-2. Log on with provided credentials.
+1. Navigate to the unique instance URL provided to you
+2. Log on with provided credentials
 
-## Exercise 1(b) Enable the ATF, run a test, and whitelist a client error
+## Exercise 1(b) Enable and run a test
+The goal of this section is to familiarize you with running a test that loads a form, and address a client error that is found during the test
+
+***Enable the test framework to run tests:***
+
 1. On your instance, locate the **Automated Test Framework** -> **Tests** module and open it
-2. Open the **Child B** says **A test suite with only successful tests within it** suite. Note the message that says "Running tests and test suites is disabled. Enable Tests and Test Suites Here". By default running the Automated Test Framework is disabled on any instance. Click the link to open the properties page
-
-    ![](2018-04-23-15-10-11.png)
-3. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Enable for failing steps**. Click **Save** at the bottom of the page
+2. Enable test suite execution and scheduled execution. Enable test debugging properties and set screenshot capture mode to **Enable for failing steps**. Click **Save** at the bottom of the page
 
     ![Automated Test Framework properties](2018-04-22-19-19-27.png)
     
@@ -22,11 +23,14 @@ We will be using an app - currently under development - called "Custom Robots". 
 
 ***Now that you've enabled tests, let's run one:***
 
-4. Go back to **Automated Test Framework** -> **Tests** and open existing test "Open new order form"
-5. Click the **Run Test** button.
+3. Navigate to **Automated Test Framework** -> **Tests**
+
+    ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
+4. Filter for, and open, an existing test "Open new order form"
+5. Click the **Run Test** button
 
     ![](E1B_001.png)
-6. In the "Pick a Browser" modal click **Run Test** button
+6. In the "Pick a Browser" modal click **Run Test** button to open a new browser window in which to run the forms-based test
 
     ![](E1B_002.png)
 7. Watch the test as it runs in the newly opened **Client Test Runner** window
@@ -40,6 +44,9 @@ We will be using an app - currently under development - called "Custom Robots". 
     * The test result shows which step, what the error was, and the related screenshot to show on what screen the error was reported
 
     ![](E1B_005.png)
+
+***The test reported a client error, note it for the application developer:***
+
 10. Add the failing **Test Log** to the warning list by clicking **Add all client errors to warning list**
 
     ![](E1B_006.png)
@@ -48,127 +55,213 @@ We will be using an app - currently under development - called "Custom Robots". 
         ![](E1B_007.png)
 11. Navigate to **Automated Test Framework** -> **Tests**
 12. Open the same test "Open new order form" again and run it. The test should pass with status `Success with Warning(s)`
-    * More information about this can be found on the Test Result
+    * More information about the warning can be found on the Test Result
+
+***Now you can continue designing tests without being blocked by non-intrusive client errors, while the application developer can look into the root cause of the error on the application's form***
 
 # Exercise 2: Application Navigator Role-based Testing
 The goal of this section is to test application menu and module visibility of our app
-1. Click the **Tests** module
-
-    ![Automated Test Framework -> Test](2018-04-22-18-38-44.png)
+1. Navigate to the **Automated Test Framework** -> **Tests** module
 2. Click **New** button
 
     ![New Button](2018-04-22-18-40-04.png)
 3. Set the `Name` to "Application Visibility" and the `Description` to "Application menu Custom Robots and module Orders are visible to the user"
 4. Click **Save** to save the record
 
-    ![Application Visibility Test](2018-04-22-18-41-47.png) //TODO
+    ![Application Visibility Test](2018-04-22-18-41-47.png)
+
+***Add an Impersonate step so that the test runs with the necessary roles:***
+
 5. Click **Add Test Step** button
 
     ![Add Test Step](2018-04-22-18-43-14.png)
-6. In the **Server** category choose **Impersonate** from the list of step options. Click **Next** button
+6. In the **Server** category choose **Impersonate** from the list of step options and click **Next** button
 
     ![Test Category](2018-04-22-18-45-00.png)
-7. Choose "Abel Tuter" and Click **Submit** button
+7. Set `User` to "Abel Tuter" and click **Submit** button
 
     ![Impersonate Test Step](2018-04-22-18-47-08.png)
 
-8. Click **Add Test Step**. Under the **Application Navigator** category choose `Application Menu Visibility` and click **Next** button
+***Add an Application Menu Visibility assertion to the test:***
+
+8. Click **Add Test Step**. Under the **Application Navigator** category choose **Application Menu Visibility** and click **Next**
 9. In `Visible assert type` select `At least these application menus are visible`
-10. In `Visible application menus` select `Custom Robots` and click **Submit** or **Update** button
+10. In `Visible application menus` select `Custom Robots` and click **Submit** or **Update**
 
     ![Application Menu Visibility](2018-04-22-18-49-30.png)
-11. Click **Add Test Step** button. Under the `Application Navigator` category choose `Module Visibility`
-12. In Visible assert type select `At least these modules are visible`
-13. In Visible Modules select `Orders` and click **Submit** or **Update** button
+
+***Add a Module Visibility assertion to the test:***
+
+11. Click **Add Test Step** button. Under the **Application Navigator** category choose **Module Visibility**
+12. In `Visible assert type` select `At least these modules are visible`
+13. In `Visible Modules` select `Orders` and click **Submit** or **Update**
 
     ![](2018-04-22-18-50-53.png)
 14. Click **Run Test** button on the test form
 
     ![](2018-04-22-18-51-52.png)
-15. Click **Run Test** in the "Pick a browser" model window.
+15. Click **Run Test** in the "Pick a browser" model window
 
     ![](2018-04-22-18-53-33.png)
-16. Expected Result - Test should be successful.. Click [X] to close the progress viewer
+16. Expected Result - Test should be successful. Click [X] icon to close the progress viewer
 
     ![](2018-04-27-19-00-42.png)
 
 # Exercise 3: Service Catalog testing
 ## Exercise 3(a) Order Catalog Item
-The Goal of this section is to make sure buyer can order parts to build custom robots using the service catalog
+The goal of this section is to make sure buyer can order a customized robot with specified parts using the service catalog
 
-1. Create a new **Test** record. Name it "Order Custom Robot". Right-click the header and **Save** the record
-2. Click **Add Test Step** button
-3. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and Click **Submit** or **Update** button
-4.  Click **Add Test Step**. In the **Service Catalog** category choose "Open Catalog Item"
-5. Set the catalog item to `Customized Robot`
+1. Create a new **Test** record. Name it "Order Custom Robot". Click **Save** button
+
+***Add step 1 to impersonate the buyer that will use the service catalog:***
+
+2. Click **Add Test Step**
+3. In the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit** or **Update**
+
+***Add step 2 to open the catalog item to test:***
+
+4.  Click **Add Test Step**. In the **Service Catalog** category choose **Open Catalog Item** and click **Next**
+5. Set the `Catalog Item` to `Customized Robot` and click **Submit**
 
     ![](2018-04-27-23-01-19.png)
-6. Click **Submit** or **Update** button
-7. Click **Add Test Step**. Under the **Service Catalog** category choose **Set Variables Values**
+
+***Add step 3 to set the catalog item variable values:***
+
+7. Click **Add Test Step**. Under the **Service Catalog** category choose **Set Variables Values** and click **Next**
+8. Set the **Catalog Item** `Variable Values` as follows
      1. Select `choose_arms` as `Articulated Clamps`
      2. Select `choose_body` as `360 rotating platform`
      3. Select `choose_head` as `Floating orb with LED face`
-     4. Select `choose_legs` as `Levitation Drive` and click **Submit** or **Update**
+     4. Select `choose_legs` as `Levitation Drive`
+     5. click **Submit**
 
     ![](2018-04-22-19-09-13.png)
 
-8. Click **Add Test Step**. Under the **Service Catalog** category choose **Order Catalog Item** and click **Next** button
-9. Select Assert type as `Successfully ordered Catalog Item` and click **Submit** or **Update**
+***Add step 4 to submit the order:***
+
+8. Click **Add Test Step**. Under the **Service Catalog** category choose **Order Catalog Item** and click **Next**
+9. Set `Assert type` as `Successfully ordered Catalog Item` and click **Submit**
 
     ![](2018-04-22-19-12-16.png)
 
-10. Click **Run Test** button on the Test form
-11. Click **Run Test** button in the "Pick a browser" model window.
-12. Test should be successful.
+***Upon return to the test form, check your steps and then run the test***
 
-## Exercise 3(b) : Test approval of the order
-The Goal of this section is to make sure the above order goes through the approval process
+10. Check that your steps appear as follows:
+
+    ![](E3A_test_steps_review.png)
+
+11. Click **Run Test** button on the Test form
+12. Click **Run Test** button in the "Pick a browser" model window
+13. Test should be successful
+
+## Exercise 3(b) : Test approval of the request
+The goal of this section is to make sure the order is processed by the request's approval workflow (`Approval required for order price > $1000`), as well as an exploration through steps from **Form** and **Server** categories
+
+***First copy the test from Exercise 3(a) and rename it:***
 
 1. Go to **Automated Test Framework** -> **Tests**
-2. Click "Order Custom Robot" Test in the Test Module. 
-3. Click **Copy Test** button. Change the Name to "Check for Approvals" Click **Update**
+2. Filter for and open the "Order Custom Robot" Test that you created during Exercise 3(a)
+
+3. Click **Copy Test** button
 
     ![](2018-04-23-11-31-55.png)
 
-4. Open "Check for Approvals" test
-5. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
-6. Click **Add Test Steps**. Under **Forms** category choose "Open Existing Record"
-    1. In "Table" select "Request" In the "Record section"  click the back reference icon ![](2018-04-22-15-37-05.png) map it to "Step 4" Click **Submit**
+4. On the resulting new **Test** form, change the `Name` to "Check for Approvals" and click **Update**
 
-    ![](2018-04-27-23-03-30.png)
-7. Click **Add Test Steps**. Under **Forms** category choose **Field Value Validation**
-    1. Select "Table" as "Request"
-    2. In "Condition" dropdown select "Stage" "is" "Requested"
-    3. Click **And** Button
-    4. In the dropdown select "Requested for" "is" using back reference icon ![](2018-04-22-15-37-05.png) map it to step 1 Click **Submit** button
+***Add step 5 to impersonate the ITIL user to assert the request is in Requested state:***
 
-      ![](2018-04-24-15-13-58.png)
-8. Click **Add Test Step**  Under **Server** category choose **Impersonate** from the list of options. Choose "Eric Schroeder" and click **Submit**
-9. Click **Add Test Step**  Under **Server** category choose **Record Query** step
-    1. Select "Table" as "Approval[sysapproval_approver]"
-    2. In the condition dropdown select "Approving" "is" using the back reference icon ![](2018-04-22-15-37-05.png) map it to "step 4" and click **Submit**
+5. Reopen this new "Check for Approvals" test
+6. Click **Add Test Step**.  Under **Server** category choose **Impersonate** from the list of options. Choose "ITIL User" and click **Submit**
+
+    ![](E3B001_step5_impersonate.png)
+
+***Add step 6 to open the form of the request created by the catalog item order:***
+
+7. Click **Add Test Step**. Under **Forms** category choose **Open Existing Record** and click **Next**
+8. Set `Table` as `Request [sc_request]`
+
+    ![](E3B002_set_table.png)
+
+9. Map `Record` to `Step 4: Order a Catalog Item > Request`:
+    1. First click the `Record` variable's back reference icon ![](2018-04-22-15-37-05.png) to open a list of steps that are defined to run earlier than this step during test execution
+
+        ![](E3B003_step6_mapping_icon.png)
+
+    2. Here is what the list of mappable steps should look like in the pop-up:
+
+        ![](E3B004_step6_backref_popup.png)
+
+    3. Click option `Step 4: Order Catalog Item` and then click `Request`
+
+        ![](E3B005_step6_select_request.png)
+
+    4. Now `Request` should have a `pill` named `Step 4: Order Catalog Item > Request`
+
+        ![](E3B006_step6_request_pill_set.png)
+
+        ***This mapping enables this Form step to open the request created by Step 4***
+
+    5. Click **Submit** to save the step
+
+8. Verify that your test has 6 steps as shown in this figure:
+
+    ![](E3B007_test_steps_up_to_step6.png)
+
+***Add step 7 to validate the request matches the values we expect:***
+
+8. Click **Add Test Step**. Under **Forms** category choose **Field Values Validation**
+
+    ***NOTE:*** refer to **Figure 3B-1** below for these steps:
+    1. Set `Table` as `Request [sc_request]`
+    2. Add the following `Conditions`:
+    3. First condition:
+        1. Field: `Stage`
+        2. Operator: `is`
+        3. Value: `Requested`
+    4. Click **And** button at the end of the first condition's row
+    5. Second condition:
+        1. Field: `Requested for`
+        2. Operator: `is`
+        3. Value: Using the back reference icon ![](2018-04-22-15-37-05.png), map this value to `Step 1: Impersonate > User`
+    6. Click **Submit** button to save the step
+
+    ***Figure 3B-1***
+    ![](E3B008_FieldValuesValidation.png)
+
+***Add step 8 to impersonate the user that will approve the request***
+
+9. Click **Add Test Step**. Under **Server** category choose **Impersonate** and click **Next**. Set the `User` to "Eric Schroeder" and click **Submit**
+
+***Add step 9 to retrieve the approval record by mapping to the catalog order***
+
+10. Click **Add Test Step**  Under **Server** category choose **Record Query** step
+    1. Set `Table` as `Approval [sysapproval_approver]`
+    2. In the conditions dropdown, set the first condition as follows:
+        1. Field: `Approving`
+        2. Operator: `is`
+        3. Value: using back reference icon ![](2018-04-22-15-37-05.png), map it to `Step 4: Order Catalog Item > Request` and click **Submit**
     
         ![](2018-04-24-15-06-22.png)
-10. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
+11. Click **Add Test Step**   Under **Forms** category choose **Open Existing Record** step
     1. Select "Table" as "Approval"
     2. In The Record using the back reference icon ![](2018-04-22-15-37-05.png) map it to step 10 and click **Submit**
 
         ![](2018-04-24-15-10-19.png)
-11. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
+12. Click **Add Test Step**   Under **Forms** category choose **Set Field Values** step
     1. Select "Table" as "Approval"
     2. In "Field Value" select "State" "Approved" and click **Submit**
 
      ![](2018-04-24-15-08-02.png)
-12. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
+13. Click **Add Test Step**   Under **Forms** category choose **Click a UI Action** step
     1. Select "Table" as "Request [sc_request]"
     2. Select "UI Action" as "Save" from the reference option
     3. Select Assert type as "Form submitted to server" and click **Submit**
 
     ![](2018-04-24-15-12-05.png)
 
-13. Click **Run Test** button
-14. Click **Run Test** in the "Pick a browser" model window.
-15. The test should be successful.
+14. Click **Run Test** button
+15. Click **Run Test** in the "Pick a browser" model window
+16. The test should be successful
 
 # Exercise 4: Business rule testing
 
