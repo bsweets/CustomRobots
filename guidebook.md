@@ -63,6 +63,9 @@ This exercise demonstrates
 
 ***Now you can continue designing tests without being blocked by non-intrusive client errors***
 
+
+
+
 # Exercise 2: Application Navigator Role-based Testing
 This exercise demonstrates validation of role-based access to application menus and modules in our app
 1. Navigate to the **Automated Test Framework** -> **Tests** module
@@ -124,6 +127,9 @@ This exercise demonstrates validation of role-based access to application menus 
 
     ![](E2002_TestResult.png)
 
+    *Note: You can find a completed sample of this test named `Exercise 2 (completed sample): Application Visibility`*
+
+
 
 
 # Exercise 3: Service Catalog testing
@@ -174,18 +180,20 @@ This exercise demonstrates that a buyer can order a customized robot with specif
 13. Click **Run Test** button in the "Pick a browser" modal window
 14. Test should be successful
 
+    *Note: You can find a completed sample of this test named `Exercise 3a (completed sample): Order Custom Robot`*
+
 
 
 
 ## Exercise 3(b) : Test approval of the request
 This exercise adds onto the test you created in Exercise 3(a) and demonstrates how to validate a service catalog approval workflow
 
-*NOTE: This section requires completion of Exercise 3(a)*
-
 ***First copy the test from Exercise 3(a) and rename it:***
 
 1. Go to **Automated Test Framework** -> **Tests**
 2. Filter for and open the "Order Custom Robot" Test that you created during Exercise 3(a)
+
+    *NOTE: If you did not complete Exercise 3(a), you can start this exercise by using test `Exercise 3a (completed sample): Order Custom Robot`*
 
 3. Click **Copy Test** button
 
@@ -288,7 +296,8 @@ This exercise adds onto the test you created in Exercise 3(a) and demonstrates h
 
 16. Click **Add Test Step**. Under **Forms** category choose **Click a UI Action** step
     1. Set `Table` as `Request [sc_request]`
-    2. Set `UI Action` as `Save` (use the first option)
+    2. Set `UI Action` as `Update` (use the first option)
+        * If you inspect the Info ("i") icon on the UI action field it should show the preview of the UI Action record having an `Action name` of "sysverb_update"
     3. Set `Assert type` as `Form submitted to server` and click **Submit**
 
     ![](2018-04-24-15-12-05.png)
@@ -302,6 +311,8 @@ This exercise adds onto the test you created in Exercise 3(a) and demonstrates h
 19. Click **Run Test** in the "Pick a browser" model window
 20. The test should be successful
 
+    *Note: You can find a completed sample of this test named `Exercise 3b (completed sample): Check for Approvals`*
+
 
 
 
@@ -309,10 +320,10 @@ This exercise adds onto the test you created in Exercise 3(a) and demonstrates h
 
 This exercise demonstrates how to test the behavior of a business rule. In this scenario the business rule creates an Order upon approval of the service catalog request that the test creates
 
-*NOTE: This section requires completion of **Exercise 3(a)** and **Exercise 3(b)***
-
 1. Go to **Automated Test Framework** -> **Tests**
-2. Filter for and open your "Check for Approvals" Test that you worked on during the last two exercises
+2. Filter for and open your completed "Check for Approvals" Test that you worked on during the last two exercises
+
+    *NOTE: If you did not complete Exercise 3(b), you can start this exercise by using test `Exercise 3b (completed sample): Check for Approvals`*
 
 ***Copy the original test and its steps:***
 
@@ -347,6 +358,8 @@ This exercise demonstrates how to test the behavior of a business rule. In this 
 12. Click **Run Test** button in the "Pick a browser" model window.
 13. Test should be successful
 
+    *Note: You can find a completed sample of this test named `Exercise 4 (completed sample): Order created in order table`*
+
 ***We have verified the business rule successfully created an order upon approval of the `Customized Robot` request***
 
 
@@ -362,112 +375,132 @@ In this scenario the requested item will be marked by the manufacturer as Shippe
 
 ***Add Step 1 to impersonate a user with access to the application:***
 
-3. Click **Add Test Step** button.  Under the **Server** category choose **Impersonate** from the list of options. Choose "Abel Tuter" and click **Submit**
+3. Click **Add Test Step** button.  Under the **Server** category choose **Impersonate** from the list of options and click **Next**
+4. Choose "Eric Schroeder" and click **Submit**
 
 ***Add Step 2 to insert an order record to bypass the service catalog use cases:***
 
-4. Click **Add Test Step** button. Under the **Server** category choose **Record Insert** step and click **Next** button
+5. Click **Add Test Step** button. Under the **Server** category choose **Record Insert** step and click **Next** button
     1. Select table as Order
-    2. Add "Arms" as "Adaptable multi-tool arms"
-    3. Add "Body" as "360 rotating platform"
-    4. Add "Head" as "360º rotatable dome with accessory ports"
-    5. Add "legs" as "Arachnid legs"
-    6. Add "Status" as "Open"
-    7. Add "Buyer" as "Abel Tuter" the screen should look like below and click **Update** or **Submit** button
+    2. Add `Arms` as `Articulated clamps`
+    3. Add `Body` as `Trash compactor`
+    4. Add `Head` as `Binocular head with dual shades`
+    5. Add `legs` as `Tank treads`
+    6. Add `Status` as `Open`
+    7. Add `Buyer` as "Abel Tuter"
+    8. Click **Submit**
 
     ![](2018-04-25-16-29-08.png)
 
-***Add Step 3 to to update the Order and trigger a notification email:***
+***Add Step 3 to to update the Order and trigger a notification email event:***
 
-5. Click **Add Test Step**. Under the **Server** category choose **Record Update** step and click **Next** button
-6. Using back reference icon ![](2018-04-22-15-37-05.png) select step 2 
-    1. Set the first entry to the Field Value `Shipped` and value as `javascript:gs.nowDateTime()` and click **Update** or **Submit** button
+6. Click **Add Test Step**. Under the **Server** category choose **Record Update** step and click **Next** button
+7. Using back reference icon ![](2018-04-22-15-37-05.png) select `Step 2: Record Insert > Record`
+8. Set the first entry to the Field Value `Shipped` and value as `javascript:gs.nowDateTime()` and click **Submit** button
 
    ![](2018-04-25-16-30-46.png)
-        **Note** We are using dynamic date on order update
+        *Note: This is an example of dynamically setting a date in **Record Update**. This can also be done with **Set Field Values** and **Set Variable Values** steps*
 
 ***Add Step 4 to validate that the email was sent and assert its contents***
 
-7. Click **Add Test Step** button. Under the **Server** category choose **Run Server Side Script** step and click **Next** button
-8. Copy the below code and paste it over the top of the contents of the `Step execution script` script box and click **Update** or **Submit** button
-
-
-<!-- TODO change the email script to limit(1)!!! -->
+9. Click **Add Test Step** button. Under the **Server** category choose **Run Server Side Script** step and click **Next** button
+10. Copy the below code and paste it over the top of the contents of the `Step execution script` script editor
 
 ```javascript
+(function(outputs, steps, stepResult, assertEqual) {
+    // specify the Test Step sys_id that created the Order record
+    var orderStepSysId = 'TODO_ENTER_STEP_1_SYS_ID_HERE';
 
-    (function(outputs, steps, stepResult, assertEqual) {
-        // specify first step sys_id
-        var firstStepSysId = 'TODO_ENTER_STEP_1_SYS_ID_HERE';
+    // get order from record insert step
+    var orderId = steps(orderStepSysId).record_id;
+    var order = new GlideRecord('sn_custom_robots_order');
+    order.get(orderId);
+    var assertOrderExists = {
+        name: "assert order exists",
+        shouldbe: 1,
+        value: order.getRowCount(),
+    };
+    assertEqual(assertOrderExists);
+    gs.info('confirmed order:\n:order.sys_id' + order.sys_id + '\nnumber: ' + order.number + '\nshipped date: ' + order.shipped);
 
-        // get order from first step
-        var orderId = steps(firstStepSysId).record_id;
-        var order = new GlideRecord('sn_custom_robots_order');
-        order.get(orderId);
-        var assertOrderExists = {
-            name: "assert order exists",
-            shouldbe: 1,
-            value: order.getRowCount(),
-        };
-        assertEqual(assertOrderExists);
-        gs.info('found order: ' + order.sys_id);
+    // get buyer's first name from order
+    var user = new GlideRecord('sys_user');
+    user.get(order.buyer);
+    var assertUserExists = {
+        name: "assert user exists",
+        shouldbe: 1,
+        value: user.getRowCount(),
+    };
+    assertEqual(assertUserExists);
+    gs.info("\nconfirmed buyer:\nbuyer.sys_id: " + user.sys_id + "\nname: " + user.name);
 
-        // get buyer's first name from order
-        var user = new GlideRecord('sys_user');
-        user.get(order.buyer);
-        var assertUserExists = {
-            name: "assert user exists",
-            shouldbe: 1,
-            value: user.getRowCount(),
-        };
-        assertEqual(assertUserExists);
-        gs.info("found buyer: " + user.sys_id + ", first name: " + user.first_name);
+    // wait for email to be created from business rule after order updated to shipped
+    var counter = 0;
+    while (counter++ < 20) {
+        gs.info('query attempt #: ' + counter);
+        // check if email found
+        var email = new GlideRecord('sys_email');
+        email.addQuery('subject', 'LIKE', '%' + order.number + '%');
+        email.setLimit(1);
+        email.query();
+        if (email.next()) {
+            gs.info('email body contents first 400 chars: \n' + email.body.substring(0,400));
+            var assertEmailContainsBuyerFirstName = {
+            name: "email body contains recipient first name",
+            shouldbe: true,
+            value: (email.body.indexOf(user.first_name) != -1),
+            };
+            assertEqual(assertEmailContainsBuyerFirstName);
+            return true;
+        } else
+            gs.info('email not yet found');
 
-        // wait for email to be created from business rule after order updated to shipped
-        var counter = 0;
-        while (counter++ < 20) {
-            // check if email found
-            var email = new GlideRecord('sys_email');
-            email.addQuery('subject', 'LIKE', '%' + order.request_item.request + '%');
-            email.query();
-            if (email.next()) {
-                gs.info('email body contents first 200 chars: \n' + email.body.substring(0,200));
-                var assertEmailContainsBuyerFirstName = {
-                name: "email body contains recipient first name",
-                shouldbe: true,
-                value: (email.body.indexOf(user.first_name) != -1),
-                };
-                assertEqual(assertEmailContainsBuyerFirstName);
-                return true;
-            }
-            gs.sleep(1000);
-        }
-        // if reached here, the email wasn't sent or took longer than 20 seconds
-        stepResult.setOutputMessage("Failed to find email in 20 seconds");
-        return false;
+        gs.sleep(1000);
+    }
+    // if reached here, the email wasn't sent or took longer than 20 seconds
+    stepResult.setOutputMessage("Failed to find email in 20 seconds");
+    return false;
 
-    })(outputs, steps, stepResult, assertEqual);
+})(outputs, steps, stepResult, assertEqual);
 ```
 
-***You need to manually set the Step's `sys_id` into the script as a JavaScript-level back reference to an earlier step's output:***
+* Example
 
-8. Right-click "Record Insert" step in the test and copy sys_id like below
+    ![](E5001_script_step.png)
+
+11. Click **Submit** to return to the test form
+
+***Before moving onto the next step, you must define a previous step `sys_id` in the Run Server Side Step `Step execution script` field:***
+
+12. On the test form right-click **Record Insert** step in the test and select `Copy sys_id` as follows:
 
     ![](2018-04-27-21-53-48.png)
 
-<!-- TODO "replace sys_id with the one copied from earlier step -->
-9. **REPLACE** the sys_id on this line in the  `var firstStepSysId = 'TODO_ENTER_STEP_1_SYS_ID_HERE';`
+13. Now click on `Run Server Side Script` step to open its record
+14. Look in the `Step execution script` field and find the following line
+    * `var orderStepSysId = 'TODO_ENTER_STEP_1_SYS_ID_HERE';`
+15. Replace `TODO_ENTER_STEP_1_SYS_ID_HERE` with the sys_id that you copied in **step 12** above
 
-    ![](2018-04-27-21-56-03.png) <!-- replace this image with word "replace" -->
+    ![](2018-04-27-21-56-03.png)
+16. Click **Update** to save and return to the test form
+
+***Confirm your test steps***
+
+![](E5002_steps.png)
 
 ***Run the test, it will only pass after it has found an email and asserted its contents:***
 
-10. Click **Run Test** button
-11. Test should be successful
+14. Click **Run Test** button
+15. Test should be successful
+
+    *Note: You can find a completed sample of this test named `Exercise 5 (completed sample): Check e-mail Notification`*
+
+***The Run Server Side Script test finds the email by order number and asserts its contents***
 
 
 
 
+<!-- 
 # Exercise 6: Create a new Step Configuration
 This exercise demonstrates how to create a new **Step Configuration** that can automatically approve requests. The Step finds and approves the specified request with specified approval user
 
@@ -497,45 +530,46 @@ This exercise demonstrates how to create a new **Step Configuration** that can a
 ```
 5. In the `Step execution script` field add following code:
 
-    * Example:
+```javascript
+(function executeStep(inputs, outputs, stepResult, timeout) {
+    
+    var request = new GlideRecord('sc_request');
+    request.get(inputs.u_request);
+    var approver = new GlideRecord('sys_user');
+    approver.get(inputs.u_approver);
+
+    // wait for approval to appear
+    var counter = 0;
+    while (counter++ < 60) {
+        var approval = new GlideRecord('sysapproval_approver');
+        approval.addQuery('document_id', request.sys_id);
+        approval.addQuery('state', 'requested');
+        approval.query();
+        if (approval.next()) {
+            approval.state = 'approved';
+            if (approval.update()) {
+                stepResult.setOutputMessage(gs.getMessage("successfully approved request '{0}' for user {1}", [request.number, approver.name]));
+                stepResult.setSuccess();
+                return;
+            } else {
+                stepResult.setOutputMessage(gs.getMessage("failed to approve request '{0}' for user {1}", [request.number, approver.name]));
+                stepResult.setFailed();
+                return;
+            }
+        }
+        gs.sleep(1000);
+    }
+    stepResult.setOutputMessage("failed to find specified approver user");
+    stepResult.setFailed();
+    return;
+
+}(inputs, outputs, stepResult, timeout));
+```
+
+* Example of what pasting the script should look like:
 
     ![](E6001_execution_script.png)
 
-    ```javascript
-    (function executeStep(inputs, outputs, stepResult, timeout) {
-        
-        var request = new GlideRecord('sc_request');
-        request.get(inputs.u_request);
-        var approver = new GlideRecord('sys_user');
-        approver.get(inputs.u_approver);
-
-        // wait for approval to appear
-        var counter = 0;
-        while (counter++ < 60) {
-            var approval = new GlideRecord('sysapproval_approver');
-            approval.addQuery('document_id', request.sys_id);
-            approval.addQuery('state', 'requested');
-            approval.query();
-            if (approval.next()) {
-                approval.state = 'approved';
-                if (approval.update()) {
-                    stepResult.setOutputMessage(gs.getMessage("successfully approved request '{0}' for user {1}", [request.number, approver.name]));
-                    stepResult.setSuccess();
-                    return;
-                } else {
-                    stepResult.setOutputMessage(gs.getMessage("failed to approve request '{0}' for user {1}", [request.number, approver.name]));
-                    stepResult.setFailed();
-                    return;
-                }
-            }
-            gs.sleep(1000);
-        }
-        stepResult.setOutputMessage("failed to find specified approver user");
-        stepResult.setFailed();
-        return;
-
-    }(inputs, outputs, stepResult, timeout));
-    ```
 6. Click **Submit** button
 7. Open "Approve Request" step configuration form
 8. Under the step configuration's related list **Input Variables**, click **New** button
@@ -553,7 +587,8 @@ This exercise demonstrates how to create a new **Step Configuration** that can a
 12. Set the following to create the second reference input variable
     1. `Type`: `Reference`
     2. `Label`: Approver
-    3. `Name`: u_approver
+    3. `Column Name`: u_approver
+    4. Right-click the form header and click **Save**
     4. Under **Reference Specification** related list, set `Reference` to `User (sys_user)`
 
     ![](2018-04-27-22-37-36.png)
@@ -562,13 +597,6 @@ This exercise demonstrates how to create a new **Step Configuration** that can a
 **Now we will use this new step in a lab-provided test to approve the request**
 
 14. Navigate to **Automated Test Framework** -> **Tests**
-
-
-
-
-<!--
-***// TODO need to update the sample test to not already use the sample step config***
--->
 
 
 
@@ -587,9 +615,12 @@ This exercise demonstrates how to create a new **Step Configuration** that can a
     ![](2018-04-27-12-46-22.png)
 21. Click **Run Test** button on the test form
 22. Click **Run Test** in the "Pick a browser" model window.
-23. Test should be successful
+23. Test should be successful -->
 
-# Exercise 7: Create a Test Suite and a Schedule that will periodically run it
+
+
+
+# Exercise 6: Create and schedule a Test Suite
 
 This exercise demonstrates how to create and run a **Test Suite** and then add it to a **Schedule** so that it can run later
 
@@ -612,10 +643,13 @@ This exercise demonstrates how to create and run a **Test Suite** and then add i
     ![](2018-04-27-14-48-19.png)
 6. Repeat Step 4 and 5 and add the tests you created to this test suite
     1. Order Custom Robot
-    2. Check e-mail Notification
+    2. Order created in order table
     3. Check for approvals
-    4. Order created in order table
-    5. Approve order using custom step
+    4. Check e-mail Notification
+    
+    * *Note Samples of each of these tests can be found in the Tests list with naming format:*
+        * `Exercise # (completed sample): NAME`
+    <!-- 5. Approve order using custom step -->
 
     ![](2018-04-27-14-54-37.png)
 
@@ -634,7 +668,7 @@ This exercise demonstrates how to create and run a **Test Suite** and then add i
 
 13. Navigate to **Automated Test Framework** -> **Run** -> **Scheduled Client Test Runner**, right-click and select **Open Link in New Tab**
 
-***Execute the schedule and watch it run the Test Suite:***
+***Execute the schedule:***
 
 14. Go back to main tab and navigate to **Automated Test Framework** -> **Schedules**
 15. Open "My Lab Test Schedule"
@@ -664,8 +698,8 @@ In this lab you have learned how to test various aspects of your customizations 
     * Populate test data with *dynamic dates* (`javascript:gs.nowDateTime()`)
     * Run assertions in server-side (Rhino) JavaScript
     * Test notifications (sysevent_email_action) and notification events
+<!-- * Exercise 6:
+    * Create your own custom Step Configurations (Category: Server) to automate complex assertions -->
 * Exercise 6:
-    * Create your own custom Step Configurations (Category: Server) to automate complex assertions
-* Exercise 7:
     * Build and run Test Suites
     * Build and run Scheduled Test Suites
