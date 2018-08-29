@@ -6,9 +6,18 @@ The goal of this lab is to familiarize you with creating and running tests, as w
 We will be using an app - currently under development - called "Custom Robots". This app enables a buyer to order custom robots via Service Catalog. The seller can track and approve the order state and sends the buyer an email when the order is complete. We will write tests to validate critical use cases of this app
 
 # Exercise 1: Setup
-## Exercise 1(a) Log in to your provided instance
-1. Navigate to the unique instance URL provided to you
-2. Log on with provided credentials
+## Exercise 1(a) Log in to your instance
+1. Log in to a Kingston or London instance.  If you need an instance, request a personal developer instance from the [Developer Portal](developer.servicenow.com)
+2. Log in to the instance as the **admin** user
+3. Use the Application Navigator to open **System Applications \> Studio**  
+4. In the Load Application dialog, click the **Import From Source Control** button
+5. In the Import Application dialog, configure the URL:  **https://github.com/ServiceNowEvents/K18-CCW0604-Getting-Started-With-ATF.git**.  Leave the User name and Password fields blank.  
+![Import Application from a repo](2018-08-29_11-40-33.png)
+6. Click the **Import** button
+7. When the application import is completed, click the **Select Application** button  
+8. In the Load Application dialog, click the link to the **Custom Robots** application to open it for editing in Studio.  
+![Open app](2018-08-29_11-47-35.png)  
+
 
 ## Exercise 1(b) Enable and run a test
 This exercise demonstrates
